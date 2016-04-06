@@ -14,8 +14,9 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 body {
-	padding-top: 50px;
+	padding-top: 15px;
 	padding-bottom: 20px;
+	text-align: center;
 }
 </style>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -27,15 +28,18 @@ body {
 </head>
 <body>
 	<div class="container">
-		<div class="header clearfix">
-			<img alt="LogoHorizontal" class="img-responsive"
-				src="./img/Marca/bigode-marca-horizontal.png">
+		<div class="header clearfix" align="center">
+			<a href="http://localhost:8080/bigode/index.jsp">
+				<img alt="LogoHorizontal" class="img-responsive" 
+					height=70% width=70%
+					src="./img/Marca/bigode-marca-horizontal.png">
+			</a>
 		</div>
 
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Ei, Bigode!</h1>
+				<h1>Ô, Bigode!</h1>
 				<p>Para acessar o menu do bar digite o código que se encontra na
 					sua mesa!</p>
 				<p>

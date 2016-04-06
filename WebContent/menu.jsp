@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 body {
-	padding-top: 50px;
+	padding-top: 15px;
 	padding-bottom: 20px;
+	text-align: center;
 }
 </style>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -25,34 +26,47 @@ body {
 
 </head>
 <body>
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+	<div class="header clearfix" align="center">
+		<a href="http://localhost:8080/bigode/index.jsp"> <img
+			alt="LogoHorizontal" class="img-responsive" height=70% width=70%
+			src="./img/Marca/bigode-marca-horizontal.png">
+		</a>
+	</div>
+	<div class="row marketing">
+		<div class="col-lg-6">
+			<h4>Subheading</h4>
+			<p>Donec id elit non mi porta gravida at eget metus. Maecenas
+				faucibus mollis interdum.</p>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+			<h4>Subheading</h4>
+			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+				Cras mattis consectetur purus sit amet fermentum.</p>
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
+			<h4>Subheading</h4>
+			<p>Maecenas sed diam eget risus varius blandit sit amet non
+				magna.</p>
+		</div>
 
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+		<div class="col-lg-6">
+			<h4>Subheading</h4>
+			<p>Donec id elit non mi porta gravida at eget metus. Maecenas
+				faucibus mollis interdum.</p>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+			<h4>Subheading</h4>
+			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+				Cras mattis consectetur purus sit amet fermentum.</p>
 
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-      </div>
+			<h4>Subheading</h4>
+			<p>Maecenas sed diam eget risus varius blandit sit amet non
+				magna.</p>
+		</div>
+	</div>
 
-      <footer class="footer">
-        <p>© Company 2014</p>
-      </footer>
+	<footer class="footer">
+	<p>© Company 2014</p>
+	</footer>
 
-    </div> <!-- /container -->
+	</div>
+	<!-- /container -->
 </body>
 </html>
