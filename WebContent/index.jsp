@@ -6,7 +6,7 @@
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title></title>
+<title>Ô, Bidgode!</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -22,7 +22,8 @@ body {
 <link rel="stylesheet" href="css/main.css">
 
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-<title>Bigode</title>
+<!-- <title>Bigode</title> -->
+
 </head>
 <body>
 	<div class="container">
@@ -38,14 +39,14 @@ body {
 				<p>Para acessar o menu do bar digite o código que se encontra na
 					sua mesa!</p>
 				<p>
-				<form role="form">
+				<form role="form" action="ConectaEstabelecimento">
 					<div class="form-group">
 						<label for="codigoMesa">Codigo da mesa:</label> 
 						<input type="codigoMesa"
 							class="form-control" id="codigoMesa">
 					</div>
-					<button type="submit" class="btn btn-primary btn-lg"
-					 	href="#">Acessar menu &raquo;</button>
+					<button type="submit" class="btn btn-primary btn-lg" value="Send">
+						Acessar menu &raquo;</button>
 				</form>
 
 			</div>
