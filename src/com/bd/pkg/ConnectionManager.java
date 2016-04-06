@@ -1,16 +1,14 @@
 package com.bd.pkg;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ConnectionManager {
 
 	private static ConnectionManager instance = null;
 
-	private final String USERNAME = "dbuser";
-	private final String PASSWORD = "dbpassword";
-	private final String CONN_STRING = "jdbc:mysql://localhost/jdbc";
+	private final String USERNAME = "root";
+	private final String PASSWORD = "EACHesi2016!";
+	private final String CONN_STRING = "jdbc:mysql://107.178.215.125/jdbc";
 
 	private Connection conn = null;
 

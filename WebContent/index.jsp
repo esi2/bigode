@@ -49,11 +49,11 @@ body {
 				<p>Para acessar o menu do bar digite o código que se encontra na
 					sua mesa!</p>
 				<p>
-				<form role="form" action="ConectaEstabelecimento">
+				<form role="form" action="ConectaEstabelecimento" method="get">
 					<div class="form-group">
 						<label for="codigoMesa">Codigo da mesa:</label> 
 						<input type="codigoMesa"
-							class="form-control" id="codigoMesa">
+							class="form-control" id="codigoMesa" name="codigoMesa">
 					</div>
 					<button type="submit" class="btn btn-primary btn-lg" value="Send">
 						Acessar menu &raquo;</button>

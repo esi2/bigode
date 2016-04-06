@@ -34,24 +34,34 @@ public class ConectaEstabelecimento extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		String codMesa = request.getParameter("codigoMesa");
+		
 		try {
-			int codMesa = Integer.parseInt(request.getParameter("codigoMesa"));
+			// Ex: codMesa = 1_3 -> bar: 1, mesa: 3
+			// codMesa = 1023_43 -> bar:1023, mesa: 43
+			
+			String[] codMesaAux = new String[2];
+			codMesaAux = codMesa.split("_");
+			int bar = Integer.parseInt(codMesaAux[0]);
+			int mesa = Integer.parseInt(codMesaAux[1]);
+			
 			Connection conn = ConnectionManager.getInstance().getConnection();
-			String sql = "SELECT * FROM x "
-					+ "WHERE y = ";
+			String sql = "SELECT * FROM BAR UNION MESA "
+					+ "WHERE ID_BAR = " + bar
+					+ " AND NUM_MESA = " + mesa + ";";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs =	pstmt.executeQuery();
-			int codSQL = rs.getInt(0); //TO-DO
-			if(codSQL==codMesa){
-				response.sendRedirect("http://localhost:8080/bigode/menu.jsp");	
+			int confirmacaoBar = rs.findColumn("ID_BAR");
+			int confirmacaoMesa = rs.findColumn("NUM_MESA");
+			if(confirmacaoBar==bar && confirmacaoMesa==mesa){
+				response.sendRedirect("http://localhost:8080/bigode/menu.jsp?"+codMesa);	
 			}else{
 				response.sendRedirect("http://localhost:8080/bigode/index.jsp");	
 			}
 			
-			
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.toString());
-			response.sendRedirect("http://localhost:8080/bigode/index.jsp");
+			response.sendRedirect("http://localhost:8080/bigode/index.jsp?"+codMesa);
 		}
 		
 	}
