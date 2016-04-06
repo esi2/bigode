@@ -35,16 +35,19 @@ public class ConectaEstabelecimento extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		try {
-			String codMesa = request.getParameter("codigoMesa");
+			int codMesa = Integer.parseInt(request.getParameter("codigoMesa"));
 			Connection conn = ConnectionManager.getInstance().getConnection();
-			String sql = "";
+			String sql = "SELECT * FROM x "
+					+ "WHERE y = ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs =	pstmt.executeQuery();
-
-			if(rs!=null){
-				
+			int codSQL = rs.getInt(0); //TO-DO
+			if(codSQL==codMesa){
+				response.sendRedirect("http://localhost:8080/bigode/menu.jsp");	
+			}else{
+				response.sendRedirect("http://localhost:8080/bigode/index.jsp");	
 			}
-			response.sendRedirect("http://localhost:8080/bigode/menu.jsp");
+			
 			
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.toString());
