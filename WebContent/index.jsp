@@ -13,10 +13,16 @@
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
+@font-face {
+  font-family: 'Raleway-Light';
+  src: url('./fonts/Raleway-Light.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('./fonts/Raleway-Light.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
 body {
 	padding-top: 15px;
 	padding-bottom: 20px;
 	text-align: center;
+	font-family: 'Raleway-Light';
 }
 </style>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
