@@ -1,6 +1,12 @@
 package com.bd.pkg;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +34,22 @@ public class ConectaEstabelecimento extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.sendRedirect("http://localhost:8080/bigode/menu.jsp");
+		try {
+			String codMesa = request.getParameter("codigoMesa");
+			Connection conn = ConnectionManager.getInstance().getConnection();
+			String sql = "";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs =	pstmt.executeQuery();
+
+			if(rs!=null){
+				
+			}
+			response.sendRedirect("http://localhost:8080/bigode/menu.jsp");
+			
+		} catch (Exception e) {
+			System.out.println("Erro: " + e.toString());
+			response.sendRedirect("http://localhost:8080/bigode/index.jsp");
+		}
 		
 	}
 
