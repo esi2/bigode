@@ -24,8 +24,9 @@ public class ConnectionManager {
 
 	private boolean openConnection() {
 		try {
+		    Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
