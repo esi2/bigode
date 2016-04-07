@@ -8,7 +8,7 @@ public class ConnectionManager {
 
 	private final String USERNAME = "root";
 	private final String PASSWORD = "EACHesi2016!";
-	private final String CONN_STRING = "jdbc:mysql://107.178.215.125/jdbc";
+	private final String CONN_STRING = "jdbc:mysql://bigode-esi2.c9users.io:3036/BIGODE";
 
 	private Connection conn = null;
 
