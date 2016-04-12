@@ -46,12 +46,12 @@ p{
 	color: red;
 }
 .footerText{
-	padding-top:2%;
+	padding-top:3%;
 	color: white;
 	font-family: 'Raleway-SemiBold';
 }
 #footerBar {
-    height: 45px;
+    height: 15%;
     background: purple;
     position: fixed;
     bottom: 0;
