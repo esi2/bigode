@@ -13,50 +13,87 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 @font-face {
-  font-family: 'Raleway-Light';
-  src: url('./fonts/Raleway-Light.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-       url('./fonts/Raleway-Light.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+	font-family: 'Raleway-Light';
+	src: url('./fonts/Raleway-Light.woff') format('woff'),
+		/* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('./fonts/Raleway-Light.ttf') format('truetype');
+	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
+
 @font-face {
-  font-family: 'Raleway-SemiBold';
-  src: url('./fonts/Raleway-SemiBold.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-       url('./fonts/Raleway-SemiBold.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+	font-family: 'Raleway-SemiBold';
+	src: url('./fonts/Raleway-SemiBold.woff') format('woff'),
+		/* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('./fonts/Raleway-SemiBold.ttf') format('truetype');
+	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
+
 @font-face {
-  font-family: 'Raleway-Medium';
-  src: url('./fonts/Raleway-Medium.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-       url('./fonts/Raleway-Medium.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+	font-family: 'Raleway-Medium';
+	src: url('./fonts/Raleway-Medium.woff') format('woff'),
+		/* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('./fonts/Raleway-Medium.ttf') format('truetype');
+	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
+
 body {
 	padding-top: 15px;
 	padding-bottom: 20px;
 	text-align: left;
 	font-family: 'Raleway-Medium';
 }
-p{
+
+p {
 	padding-left: 2%;
 	padding-bottom: 1%;
 }
-.menu{
+
+.menu {
 	color: purple;
 	padding-top: 5%;
 	font-size: 150%;
 }
-.aviso{
+
+.aviso {
 	color: red;
 }
-.footerText{
-	padding-top:3%;
+
+.footerText {
+	padding-top: 3%;
 	color: white;
 	font-family: 'Raleway-SemiBold';
 }
+
 #footerBar {
-    height: 15%;
-    background: purple;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: -1
+	height: 15%;
+	background: purple;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	z-index: -1
+}
+
+#sides {
+	margin: 2%;
+	border: 2%;
+	padding: 5%;
+	max-height: 800px;
+	max-width: 600px;
+}
+
+#left {
+	text-align: left;
+	float: left;
+	width: 30%;
+	padding-right: 4%;
+	overflow: hidden;
+}
+
+#right {
+	text-align: left;
+	float: left;
+	width: 70%;
+	overflow: hidden;
 }
 </style>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -73,40 +110,31 @@ p{
 			src="./img/Marca/bigode-marca-horizontal.png">
 		</a>
 	</div>
-	<div> 
-		<p class="menu"> 
-			Peca tudo o que quiser! ;)
-		</p>
-		<p>
-			Você está na Mesa X do Bar Y
-		</p>
-		<p class="aviso">
-			O que você pedir por aqui será incluido na conta da sua mesa
-			e será pago tudo junto quando sua conta vier.
-		</p>
+	<div>
+		<p class="menu">Peca tudo o que quiser! ;)</p>
+		<p>Você está na Mesa X do Bar Y</p>
+		<p class="aviso">O que você pedir por aqui será incluido na conta
+			da sua mesa e será pago tudo junto quando sua conta vier.</p>
 	</div>
-	<div class="row marketing">
-		<div class="col-lg-6">
-			<h4>Subheading</h4>
-			<p>Donec id elit non mi porta gravida at eget metus. Maecenas
-				faucibus mollis interdum.</p>
 
-			<h4>Subheading</h4>
-			<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-				Cras mattis consectetur purus sit amet fermentum.</p>
-
-			<h4>Subheading</h4>
-			<p>Maecenas sed diam eget risus varius blandit sit amet non
-				magna.</p>
+	<div id="sides">
+		<div id="left">
+			<img alt="default-placeholder" src="./img/default-placeholder.png"
+				width="100%" height="100%">
+		</div>
+		<div id="right">
+			<dl>
+				<dt>Nome produto 1</dt>
+				<dd>Preco</dd>
+			</dl>
 		</div>
 	</div>
-	
+
+
 	<div id="footerBar">
-		<p class="footerText">
-			Preço total: 
-		</p>
+		<p class="footerText">Preço total:</p>
 	</div>
-	
+
 	<footer class="footer">
 	<p>© Company 2014</p>
 	</footer>
