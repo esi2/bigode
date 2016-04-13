@@ -110,9 +110,9 @@ p {
 			src="./img/Marca/bigode-marca-horizontal.png">
 		</a>
 	</div>
-	<div>
+	<div id="menu-title">
 		<p class="menu">Peca tudo o que quiser! ;)</p>
-		<p>Você está na Mesa X do Bar Y</p>
+		<!-- append templateName aqui  -->	
 		<p class="aviso">O que você pedir por aqui será incluido na conta
 			da sua mesa e será pago tudo junto quando sua conta vier.</p>
 	</div>
@@ -123,10 +123,7 @@ p {
 				width="100%" height="100%">
 		</div>
 		<div id="right">
-			<dl>
-				<dt>Nome produto 1</dt>
-				<dd>Preco</dd>
-			</dl>
+			
 		</div>
 	</div>
 
@@ -141,5 +138,24 @@ p {
 
 	</div>
 	<!-- /container -->
+
+	<script>
+
+	function templateName(String mesa, String bar){
+		return '<p>Você está na Mesa ' + mesa +' do Bar ' + bar +'</p>';
+	}
+	
+	function templateProduct(String nomeProduto, String preco){
+		 var templateProduto = '<dl>\n\
+									<dt>' + nomeProduto + '</dt>\n\
+									<dd>' + preco + '</dd>\n\
+								</dl>';
+
+
+		return templateProduto;
+	}
+	</script>
+
+
 </body>
 </html>
