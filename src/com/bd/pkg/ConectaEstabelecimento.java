@@ -1,5 +1,7 @@
 package com.bd.pkg;
 
+//[12.04.2016 HEBERT] - Implementacao DAO
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import DAO.ClienteBigodeDAO;
 
 /**
  * Servlet implementation class ConectaEstabelecimento
@@ -46,9 +50,11 @@ public class ConectaEstabelecimento extends HttpServlet {
 			int mesa = Integer.parseInt(codMesaAux[1]);
 			
 			Connection conn = ConnectionManager.getInstance().getConnection();
-			String sql = "SELECT * FROM BAR UNION MESA "
-					+ "WHERE ID_BAR = " + bar
-					+ " AND NUM_MESA = " + mesa + ";";
+			
+			//[12.04.2016 HEBERT] - Implementacao DAO
+			ClienteBigodeDAO clienteDAO = new ClienteBigodeDAO();
+			String sql = clienteDAO.allBarUnionMesa(bar, mesa);
+			
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs =	pstmt.executeQuery();
 			int confirmacaoBar = rs.findColumn("ID_BAR");
