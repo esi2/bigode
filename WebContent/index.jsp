@@ -49,6 +49,11 @@ body {
 				<p>Para acessar o menu do bar digite o código que se encontra na
 					sua mesa!</p>
 				<p>
+				<%
+				if(request.getParameter("msg")!=null){
+					out.println("<h2 style=\"color:red\">Mesa inválida</h2>");
+				}
+				%>
 				<form role="form" action="ConectaEstabelecimento" method="get">
 					<div class="form-group">
 						<label for="codigoMesa">Codigo da mesa:</label> 

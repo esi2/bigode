@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.ClienteBigodeDAO;
+import DAO.BigodeDAOImpl;
 
 /**
  * Servlet implementation class ConectaEstabelecimento
@@ -40,8 +40,7 @@ public class ConectaEstabelecimento extends HttpServlet {
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		String codMesa = request.getParameter("codigoMesa");
 		
-		try {
-			// Ex: codMesa = 1_3 -> bar: 1, mesa: 3
+		// Ex: codMesa = 1_3 -> bar: 1, mesa: 3
 			// codMesa = 1023_43 -> bar:1023, mesa: 43
 			
 			String[] codMesaAux = new String[2];
@@ -49,26 +48,18 @@ public class ConectaEstabelecimento extends HttpServlet {
 			int bar = Integer.parseInt(codMesaAux[0]);
 			int mesa = Integer.parseInt(codMesaAux[1]);
 			
-			Connection conn = ConnectionManager.getInstance().getConnection();
 			
 			//[12.04.2016 HEBERT] - Implementacao DAO
-			ClienteBigodeDAO clienteDAO = new ClienteBigodeDAO();
-			String sql = clienteDAO.allBarUnionMesa(bar, mesa);
+			BigodeDAOImpl clienteDAO = new BigodeDAOImpl();
+
 			
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs =	pstmt.executeQuery();
-			int confirmacaoBar = rs.findColumn("ID_BAR");
-			int confirmacaoMesa = rs.findColumn("NUM_MESA");
-			if(confirmacaoBar==bar && confirmacaoMesa==mesa){
-				response.sendRedirect("http://localhost:8080/bigode/menu.jsp?"+codMesa);	
+			if(clienteDAO.checaBarMesa(bar, mesa)){
+				response.sendRedirect("http://localhost:8080/bigode/menu.jsp?codMesa="+bar);	
 			}else{
-				response.sendRedirect("http://localhost:8080/bigode/index.jsp");	
+				response.sendRedirect("http://localhost:8080/bigode/index.jsp?msg=Erro");	
 			}
 			
-		} catch (Exception e) {
-			System.out.println("Erro: " + e.toString());
-			response.sendRedirect("http://localhost:8080/bigode/index.jsp?"+codMesa);
-		}
+		
 		
 	}
 

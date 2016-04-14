@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%@page import="DAO.BigodeDAO"%>
+<%@page import="DAO.BigodeDAOImpl"%>
+<%@page import="java.util.ArrayList"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -112,18 +116,29 @@ p {
 	</div>
 	<div id="menu-title">
 		<p class="menu">Peca tudo o que quiser! ;)</p>
-		<!-- append templateName aqui  -->	
+		<!-- append templateName aqui  -->
 		<p class="aviso">O que você pedir por aqui será incluido na conta
 			da sua mesa e será pago tudo junto quando sua conta vier.</p>
 	</div>
-
+	<%
+	    BigodeDAO bgd = new BigodeDAOImpl();
+		ArrayList<String> products = new ArrayList<String>();
+		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
+	%>
+	<%for(int i=0; i<products.size(); i+=3){ 
+	String pic = products.get(i+2);
+	%>
 	<div id="sides">
 		<div id="left">
-			<img alt="default-placeholder" src="./img/default-placeholder.png"
+			<img alt="default-placeholder" src="data:image/jpeg;base64,<%=pic%>"
 				width="100%" height="100%">
 		</div>
 		<div id="right">
-			
+		<dl>
+				<dt><%out.println(products.get(i)); %></dt>
+				<dd><%out.println(products.get(i+1)); %></dd>
+			</dl>
+		<%} %>
 		</div>
 	</div>
 
