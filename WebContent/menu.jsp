@@ -70,7 +70,8 @@ p {
 
 #footerBar {
 	height: 15%;
-	background: purple;
+	background-color: #aa86d0;
+	background-color: var(- -pale-purple);
 	position: fixed;
 	bottom: 0;
 	width: 100%;
@@ -81,8 +82,7 @@ p {
 	margin: 2%;
 	border: 2%;
 	padding: 5%;
-	max-height: 800px;
-	max-width: 600px;
+	border: solid 1px #ebebeb;
 }
 
 #left {
@@ -99,6 +99,29 @@ p {
 	width: 70%;
 	overflow: hidden;
 }
+
+
+.down {
+  width: 100px;
+  height: 50px;
+  background-color: #dd5855;
+  background-color: var(--pastel-red);
+}
+
+.up {
+  width: 100px;
+  height: 50px;
+  background-color: #60bb7d;
+  background-color: var(--soft-green);
+}
+
+.display {
+  width: 100px;
+  height: 50px;
+  border: solid 1px #ebebeb;
+  text-align: center;
+}
+
 </style>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/main.css">
@@ -108,6 +131,20 @@ p {
 
 </head>
 <body>
+	<script type="text/javascript">
+		function modify_qty(val) {
+    	var qty = document.getElementById('qty').value;
+    	var new_qty = parseInt(qty,10) + val;
+    
+		if (new_qty < 0) {
+        	new_qty = 0;
+    	}
+    
+    	document.getElementById('qty').value = new_qty;
+			return new_qty;
+		}
+	</script>
+
 	<div class="header clearfix" align="center">
 		<a href="http://localhost:8080/bigode/index.jsp"> <img
 			alt="LogoHorizontal" class="img-responsive" height=40% width=40%
@@ -121,13 +158,13 @@ p {
 			da sua mesa e será pago tudo junto quando sua conta vier.</p>
 	</div>
 	<%
-//	    BigodeDAO bgd = new BigodeDAOImpl();
-//		ArrayList<String> products = new ArrayList<String>();
-//		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
+		//	    BigodeDAO bgd = new BigodeDAOImpl();
+		//		ArrayList<String> products = new ArrayList<String>();
+		//		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
 	%>
 	<%
-//	for(int i=0; i<products.size(); i+=3){ 
-//	String pic = products.get(i+2);
+		//	for(int i=0; i<products.size(); i+=3){ 
+		//	String pic = products.get(i+2);
 	%>
 	<div id="sides">
 		<div id="left">
@@ -140,13 +177,33 @@ p {
 		<div id="right">
 			<dl>
 				<dt>
-					<%//out.println(products.get(i)); %>
+					<%
+						//out.println(products.get(i));
+					%>
 				</dt>
 				<dd>
-					<%//out.println(products.get(i+1)); %>
+					<%
+						//out.println(products.get(i+1));
+					%>
 				</dd>
+				<div class="box">
+					<button class="down" onclick="modify_qty(-1)">-1</button>
+					
+					<input class="display" id="qty" value="0" />
+					
+					<button class="up" onclick="modify_qty(1)">+1</button>
+				</div>
+				<div class="box">
+					<button class="down" onclick="modify_qty(-1)">-1</button>
+					
+					<input class="display" id="qty" value="0" />
+					
+					<button class="up" onclick="modify_qty(1)">+1</button>
+				</div>
 			</dl>
-			<%//} %>
+			<%
+				//}
+			%>
 		</div>
 	</div>
 
