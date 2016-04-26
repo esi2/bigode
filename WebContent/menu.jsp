@@ -176,24 +176,24 @@ p {
 		</div>
 		<div id="right">
 			<dl>
-				<dt>
+				<dt class="nome">
 					<%
 						//out.println(products.get(i));
 					%>
 				</dt>
-				<dd>
+				<dd class="preco">
 					<%
 						//out.println(products.get(i+1));
 					%>
 				</dd>
-				<div class="box">
+				<div class="contador">
 					<button class="down" onclick="modify_qty(-1)">-1</button>
 					
 					<input class="display" id="qty" value="0" />
 					
 					<button class="up" onclick="modify_qty(1)">+1</button>
 				</div>
-				<div class="box">
+				<div class="contador">
 					<button class="down" onclick="modify_qty(-1)">-1</button>
 					
 					<input class="display" id="qty" value="0" />
