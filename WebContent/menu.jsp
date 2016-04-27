@@ -71,57 +71,71 @@ p {
 #footerBar {
 	height: 15%;
 	background-color: #aa86d0;
-	background-color: var(- -pale-purple);
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	z-index: -1
 }
 
-#sides {
+.sides {
 	margin: 2%;
 	border: 2%;
 	padding: 5%;
 	border: solid 1px #ebebeb;
+	height: auto;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 6%;
+	display: inline-block;
 }
 
-#left {
+.left {
 	text-align: left;
 	float: left;
 	width: 30%;
 	padding-right: 4%;
 	overflow: hidden;
+	margin-left: 10%;
+	height: 100px;
 }
 
-#right {
-	text-align: left;
-	float: left;
-	width: 70%;
+.right {
+	text-align: right;
+	float: right;
+	width: 50%;
 	overflow: hidden;
+	margin-right: 10%;
 }
-
 
 .down {
-  width: 100px;
-  height: 50px;
-  background-color: #dd5855;
-  background-color: var(--pastel-red);
+	width: 30%;
+	height: 35px;
+	background-color: #dd5855;
 }
 
 .up {
-  width: 100px;
-  height: 50px;
-  background-color: #60bb7d;
-  background-color: var(--soft-green);
+	width: 30%;
+	height: 35px;
+	background-color: #60bb7d;
 }
 
 .display {
-  width: 100px;
-  height: 50px;
-  border: solid 1px #ebebeb;
-  text-align: center;
+	width: 40%;
+	height: 35px;
+	border: solid 1px #ebebeb;
+	text-align: center;
 }
 
+.product {
+	width: 100%;
+	height: 100px;
+	margin: 1%;
+}
+
+.contador {
+	width: 50%;
+    margin-left: 50%;
+    display: inline-flex;
+}
 </style>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="css/main.css">
@@ -132,15 +146,16 @@ p {
 </head>
 <body>
 	<script type="text/javascript">
-		function modify_qty(val) {
-    	var qty = document.getElementById('qty').value;
-    	var new_qty = parseInt(qty,10) + val;
-    
-		if (new_qty < 0) {
-        	new_qty = 0;
-    	}
-    
-    	document.getElementById('qty').value = new_qty;
+		function modify_qty(val, elem) {
+
+			var input = elem.parentElement.children[1];
+			var new_qty = parseInt(input.value, 10) + val;
+
+			if (new_qty < 0) {
+				new_qty = 0;
+			}
+
+			input.value = new_qty;
 			return new_qty;
 		}
 	</script>
@@ -166,74 +181,66 @@ p {
 		//	for(int i=0; i<products.size(); i+=3){ 
 		//	String pic = products.get(i+2);
 	%>
-	<div id="sides">
-		<div id="left">
-			<!--  <img alt="default-placeholder" src="data:image/jpeg;base64,< %=//pic%>"
+	<div class="sides" id="sides">
+		<div class="product">
+			<div class="left">
+				<!--  <img alt="default-placeholder" src="data:image/jpeg;base64,< %=//pic%>"
 				width="100%" height="100%">
 				-->
-			<img alt="default-placeholder" src="img/default-placeholder.png"
-				width="100%" height="100%">
-		</div>
-		<div id="right">
-			<dl>
-				<dt class="nome">
-					<%
-						//out.println(products.get(i));
-					%>
-				</dt>
-				<dd class="preco">
-					<%
-						//out.println(products.get(i+1));
-					%>
-				</dd>
-				<div class="contador">
-					<button class="down" onclick="modify_qty(-1)">-1</button>
-					
-					<input class="display" id="qty" value="0" />
-					
-					<button class="up" onclick="modify_qty(1)">+1</button>
-				</div>
-				<div class="contador">
-					<button class="down" onclick="modify_qty(-1)">-1</button>
-					
-					<input class="display" id="qty" value="0" />
-					
-					<button class="up" onclick="modify_qty(1)">+1</button>
-				</div>
-			</dl>
-			<%
-				//}
-			%>
+				<img alt="default-placeholder" src="img/default-placeholder.png"
+					width="100%" height="100%">
+			</div>
+			<div class="right">
+				<dl>
+					<dt class="nome">
+						Coca 2L
+						<%
+							//out.println(products.get(i));
+						%>
+					</dt>
+					<dd class="preco">
+						R$10,00
+						<%
+							//out.println(products.get(i+1));
+						%>
+					</dd>
+					<div class="contador">
+						<button class="down" onclick="modify_qty(-1, this)">-</button>
+
+						<input class="display" disabled id="qty" value="0" />
+
+						<button class="up" onclick="modify_qty(1, this)">+</button>
+					</div>
+				</dl>
+				<%
+					//}
+				%>
+			</div>
 		</div>
 	</div>
 
 
 	<div id="footerBar">
-		<p class="footerText">Preço total: </p>
+		<p class="footerText">Preço total:</p>
 	</div>
 
-	<footer class="footer">
-	<p>© Company 2014</p>
-	</footer>
-
-	</div>
 	<!-- /container -->
 
 	<script>
+		function templateName(mesa, bar) {
+			return '<p>Você está na Mesa ' + mesa + ' do Bar ' + bar + '</p>';
+		}
 
-	function templateName(String mesa, String bar){
-		return '<p>Você está na Mesa ' + mesa +' do Bar ' + bar +'</p>';
-	}
-	
-	function templateProduct(String nomeProduto, String preco){
-		 var templateProduto = '<dl>\n\
-									<dt>' + nomeProduto + '</dt>\n\
-									<dd>' + preco + '</dd>\n\
+		function templateProduct(nomeProduto, preco) {
+			var templateProduto = '<dl>\n\
+									<dt>' + nomeProduto
+					+ '</dt>\n\
+									<dd>' + preco
+					+ '</dd>\n\
 								</dl>';
 
-
-		return templateProduto;
-	}
+			return templateProduto;
+		}
 	</script>
 
 
