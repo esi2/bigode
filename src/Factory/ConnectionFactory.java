@@ -13,7 +13,7 @@ public class ConnectionFactory {
     public static Connection getConnection() { 
           try  { 
              Class.forName( "com.mysql.jdbc.Driver" );
-             String url = "?";
+             String url = "143.107.58.177";
              String nome= "BIGODE";
              String user= "root";
              String pass= "EACHesi2016!";
