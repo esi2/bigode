@@ -209,7 +209,7 @@ p {
 
 
 	<div id="footerBar">
-		<p class="footerText">Preço total:</p>
+		<p class="footerText">Preço total: </p>
 	</div>
 
 	<footer class="footer">
