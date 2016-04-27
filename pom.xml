@@ -18,7 +18,11 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>bigode</groupId>
+			<artifactId>bigode</artifactId>
+		</dependency>
+</dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
