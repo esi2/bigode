@@ -5,6 +5,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>bigode</name>
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+</dependency>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
