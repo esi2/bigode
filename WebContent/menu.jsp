@@ -154,6 +154,7 @@ p {
 			if (new_qty < 0) {
 				new_qty = 0;
 			}
+			
 
 			input.value = new_qty;
 			
@@ -235,7 +236,7 @@ p {
 					%>
 
 		<div id="footerBar">
-			<p class="footerText">Preço total:</p>
+			<p class="footerText">Preço total: R$ 0,00</p>
 		</div>
 
 		<!-- /container -->
