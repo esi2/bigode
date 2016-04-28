@@ -162,11 +162,12 @@ p {
 				ArrayList<String> products = new ArrayList<String>();
 				products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
 	%>
+	
+	<div id="sides">
 	<%
 			for(int i=0; i<products.size(); i+=3){ 
 			String pic = products.get(i+2);
 	%>
-	<div id="sides">
 		<div id="left">
 			 <img src="data:image/jpeg;base64,<%=pic%>"	width="100px" height="100px">
 				
