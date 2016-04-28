@@ -179,12 +179,12 @@ p {
 	%>
 
 	<div id="sides">
-		
-		<div class="sides" id="sides">
 		<%
 			for (int i = 0; i < products.size(); i += 3) {
 				String pic = products.get(i + 2);
 		%>
+		<div class="sides" id="sides">
+		
 			<div class="product">
 				<div class="left">
 					<img src="data:image/jpeg;base64,<%=pic%>" width="100px"
@@ -216,11 +216,11 @@ p {
 				</div>
 				
 			</div>
-			<%
+			
+		</div>
+<%
 						}
 					%>
-		</div>
-
 
 		<div id="footerBar">
 			<p class="footerText">Preço total:</p>
