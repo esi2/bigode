@@ -201,10 +201,11 @@ p {
 					<button class="up" onclick="modify_qty(1)">+1</button>
 				</div>
 			</dl>
-			<%
+			
+		</div>
+		<%
 				}
 			%>
-		</div>
 	</div>
 
 
