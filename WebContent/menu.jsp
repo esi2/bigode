@@ -168,22 +168,22 @@ p {
 	%>
 	<div id="sides">
 		<div id="left">
-			<!--  <img alt="default-placeholder" src="data:image/jpeg;base64,< %=//pic%>"
+			 <img alt="default-placeholder" src="data:image/jpeg;base64,< %=//pic%>"
 				width="100px" height="100px">
-				-->
-			<img alt="default-placeholder" src="img/default-placeholder.png"
-				width="100%" height="100%">
+				
+			<!-- <img alt="default-placeholder" src="img/default-placeholder.png"
+				width="100%" height="100%">-->
 		</div>
 		<div id="right">
 			<dl>
 				<dt class="nome">
 					<%
-						//out.println(products.get(i));
+						out.println(products.get(i));
 					%>
 				</dt>
 				<dd class="preco">
 					<%
-						//out.println(products.get(i+1));
+						out.println(products.get(i+1));
 					%>
 				</dd>
 				<div class="contador">
