@@ -158,18 +158,18 @@ p {
 			da sua mesa e será pago tudo junto quando sua conta vier.</p>
 	</div>
 	<%
-		//	    BigodeDAO bgd = new BigodeDAOImpl();
-		//		ArrayList<String> products = new ArrayList<String>();
-		//		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
+			    BigodeDAO bgd = new BigodeDAOImpl();
+				ArrayList<String> products = new ArrayList<String>();
+				products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
 	%>
 	<%
-		//	for(int i=0; i<products.size(); i+=3){ 
-		//	String pic = products.get(i+2);
+			for(int i=0; i<products.size(); i+=3){ 
+			String pic = products.get(i+2);
 	%>
 	<div id="sides">
 		<div id="left">
 			<!--  <img alt="default-placeholder" src="data:image/jpeg;base64,< %=//pic%>"
-				width="100%" height="100%">
+				width="100px" height="100px">
 				-->
 			<img alt="default-placeholder" src="img/default-placeholder.png"
 				width="100%" height="100%">
@@ -202,7 +202,7 @@ p {
 				</div>
 			</dl>
 			<%
-				//}
+				}
 			%>
 		</div>
 	</div>
