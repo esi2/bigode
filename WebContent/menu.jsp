@@ -146,7 +146,7 @@ p {
 	</script>
 
 	<div class="header clearfix" align="center">
-		<a href="http://localhost:8080/bigode/index.jsp"> <img
+		<a href="index.jsp"> <img
 			alt="LogoHorizontal" class="img-responsive" height=40% width=40%
 			src="./img/Marca/bigode-marca-horizontal.png">
 		</a>
@@ -168,8 +168,7 @@ p {
 	%>
 	<div id="sides">
 		<div id="left">
-			 <img alt="default-placeholder" src="data:image/jpeg;base64,< %=//pic%>"
-				width="100px" height="100px">
+			 <img src="data:image/jpeg;base64,<%=pic%>"	width="100px" height="100px">
 				
 			<!-- <img alt="default-placeholder" src="img/default-placeholder.png"
 				width="100%" height="100%">-->
