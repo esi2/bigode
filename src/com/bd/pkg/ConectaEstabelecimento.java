@@ -51,7 +51,7 @@ public class ConectaEstabelecimento extends HttpServlet {
 			
 			
 			BigodeDAOImpl clienteDAO = new BigodeDAOImpl();
-
+			System.out.println(clienteDAO.checaBarMesa(bar, mesa));
 			
 			if(clienteDAO.checaBarMesa(bar, mesa)){
 				response.sendRedirect("menu.jsp?codMesa="+bar);	
