@@ -21,7 +21,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 
 			String sql = "SELECT * FROM BAR JOIN MESA ON BAR.ID_BAR = MESA.ID_BAR WHERE BAR.ID_BAR=" + bar
 					+ " AND MESA.NUM_MESA=" + mesa;
-
+			System.out.println(sql);
 			st = (Statement) conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			if (rs.next())

@@ -133,8 +133,8 @@ p {
 
 .contador {
 	width: 50%;
-    margin-left: 50%;
-    display: inline-flex;
+	margin-left: 50%;
+	display: inline-flex;
 }
 </style>
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -161,8 +161,8 @@ p {
 	</script>
 
 	<div class="header clearfix" align="center">
-		<a href="http://localhost:8080/bigode/index.jsp"> <img
-			alt="LogoHorizontal" class="img-responsive" height=40% width=40%
+		<a href="index.jsp"> <img alt="LogoHorizontal"
+			class="img-responsive" height=40% width=40%
 			src="./img/Marca/bigode-marca-horizontal.png">
 		</a>
 	</div>
@@ -173,76 +173,77 @@ p {
 			da sua mesa e será pago tudo junto quando sua conta vier.</p>
 	</div>
 	<%
-		//	    BigodeDAO bgd = new BigodeDAOImpl();
-		//		ArrayList<String> products = new ArrayList<String>();
-		//		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
+		BigodeDAO bgd = new BigodeDAOImpl();
+		ArrayList<String> products = new ArrayList<String>();
+		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
 	%>
-	<%
-		//	for(int i=0; i<products.size(); i+=3){ 
-		//	String pic = products.get(i+2);
-	%>
-	<div class="sides" id="sides">
-		<div class="product">
-			<div class="left">
-				<!--  <img alt="default-placeholder" src="data:image/jpeg;base64,< %=//pic%>"
-				width="100%" height="100%">
-				-->
-				<img alt="default-placeholder" src="img/default-placeholder.png"
-					width="100%" height="100%">
-			</div>
-			<div class="right">
-				<dl>
-					<dt class="nome">
-						Coca 2L
-						<%
-							//out.println(products.get(i));
-						%>
-					</dt>
-					<dd class="preco">
-						R$10,00
-						<%
-							//out.println(products.get(i+1));
-						%>
-					</dd>
-					<div class="contador">
-						<button class="down" onclick="modify_qty(-1, this)">-</button>
 
-						<input class="display" disabled id="qty" value="0" />
+	<div id="sides">
+		<%
+			for (int i = 0; i < products.size(); i += 3) {
+				String pic = products.get(i + 2);
+		%>
+		<div class="sides" id="sides">
+			<div class="product">
+				<div class="left">
+					<img src="data:image/jpeg;base64,<%=pic%>" width="100px"
+						height="100px">
 
-						<button class="up" onclick="modify_qty(1, this)">+</button>
-					</div>
-				</dl>
-				<%
-					//}
-				%>
+					<!-- <img alt="default-placeholder" src="img/default-placeholder.png" width="100%" height="100%"> -->
+				</div>
+				<div class="right">
+					<dl>
+						<dt class="nome">
+							<%
+								out.println(products.get(i));
+							%>
+						</dt>
+						<dd class="preco">
+							<%
+								out.println(products.get(i + 1));
+							%>
+						</dd>
+						<div class="contador">
+							<button class="down" onclick="modify_qty(-1, this)">-</button>
+
+							<input class="display" disabled id="qty" value="0" />
+
+							<button class="up" onclick="modify_qty(1, this)">+</button>
+						</div>
+					</dl>
+					<%
+						//}
+					%>
+				</div>
 			</div>
+			<%
+				}
+			%>
 		</div>
-	</div>
 
 
-	<div id="footerBar">
-		<p class="footerText">Preço total:</p>
-	</div>
+		<div id="footerBar">
+			<p class="footerText">Preço total:</p>
+		</div>
 
-	<!-- /container -->
+		<!-- /container -->
 
-	<script>
-		function templateName(mesa, bar) {
-			return '<p>Você está na Mesa ' + mesa + ' do Bar ' + bar + '</p>';
-		}
+		<script>
+			function templateName(mesa, bar) {
+				return '<p>Você está na Mesa ' + mesa + ' do Bar ' + bar
+						+ '</p>';
+			}
 
-		function templateProduct(nomeProduto, preco) {
-			var templateProduto = '<dl>\n\
+			function templateProduct(nomeProduto, preco) {
+				var templateProduto = '<dl>\n\
 									<dt>' + nomeProduto
-					+ '</dt>\n\
+						+ '</dt>\n\
 									<dd>' + preco
-					+ '</dd>\n\
+						+ '</dd>\n\
 								</dl>';
 
-			return templateProduto;
-		}
-	</script>
-
-
+				return templateProduto;
+			}
+		</script>
 </body>
 </html>

@@ -49,14 +49,14 @@ public class ConectaEstabelecimento extends HttpServlet {
 			int mesa = Integer.parseInt(codMesaAux[1]);
 			
 			
-			//[12.04.2016 HEBERT] - Implementacao DAO
+			
 			BigodeDAOImpl clienteDAO = new BigodeDAOImpl();
-
+			System.out.println(clienteDAO.checaBarMesa(bar, mesa));
 			
 			if(clienteDAO.checaBarMesa(bar, mesa)){
-				response.sendRedirect("http://localhost:8080/bigode/menu.jsp?codMesa="+bar);	
+				response.sendRedirect("menu.jsp?codMesa="+bar);	
 			}else{
-				response.sendRedirect("http://localhost:8080/bigode/index.jsp?msg=Erro");	
+				response.sendRedirect("index.jsp?msg=Erro");	
 			}
 			
 		
