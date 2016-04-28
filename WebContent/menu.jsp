@@ -156,6 +156,18 @@ p {
 			}
 
 			input.value = new_qty;
+			
+			var displays = document.getElementsByClassName('display');
+			var prices = document.getElementsByClassName('preco');
+			var soma = 0;
+			for (var i = 0; i < displays.length; i++) {
+				soma += (parseInt(displays[i].value, 10) * parseInt(
+						prices[i].innerText, 10));
+			}
+			
+			document.getElementsByClassName('footerText')[0].innerText = "Preço Total: R$ " + soma + ",00";
+
+			
 			return new_qty;
 		}
 	</script>
