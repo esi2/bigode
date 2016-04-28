@@ -49,7 +49,7 @@ public class ConectaEstabelecimento extends HttpServlet {
 			int mesa = Integer.parseInt(codMesaAux[1]);
 			
 			
-			//[12.04.2016 HEBERT] - Implementacao DAO
+			
 			BigodeDAOImpl clienteDAO = new BigodeDAOImpl();
 
 			

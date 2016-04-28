@@ -56,7 +56,7 @@ body {
 				%>
 				<form role="form" action="ConectaEstabelecimento" method="get">
 					<div class="form-group">
-						<label for="codigoMesa">Codigo da mesa:</label> 
+						<label for="codigoMesa">Código da mesa:</label> 
 						<input type="codigoMesa"
 							class="form-control" id="codigoMesa" name="codigoMesa">
 					</div>
