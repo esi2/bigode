@@ -179,11 +179,12 @@ p {
 	%>
 
 	<div id="sides">
+		
+		<div class="sides" id="sides">
 		<%
 			for (int i = 0; i < products.size(); i += 3) {
 				String pic = products.get(i + 2);
 		%>
-		<div class="sides" id="sides">
 			<div class="product">
 				<div class="left">
 					<img src="data:image/jpeg;base64,<%=pic%>" width="100px"
@@ -211,14 +212,13 @@ p {
 							<button class="up" onclick="modify_qty(1, this)">+</button>
 						</div>
 					</dl>
-					<%
-						//}
-					%>
+					
 				</div>
+				
 			</div>
 			<%
-				}
-			%>
+						}
+					%>
 		</div>
 
 
