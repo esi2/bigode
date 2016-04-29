@@ -14,7 +14,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
 <style>
 @font-face {
 	font-family: 'Raleway-Light';
@@ -23,6 +22,7 @@
        url('./fonts/Raleway-Light.ttf') format('truetype');
 	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
+
 @font-face {
 	font-family: 'Raleway-SemiBold';
 	src: url('./fonts/Raleway-SemiBold.woff') format('woff'),
@@ -30,6 +30,7 @@
        url('./fonts/Raleway-SemiBold.ttf') format('truetype');
 	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
+
 @font-face {
 	font-family: 'Raleway-Medium';
 	src: url('./fonts/Raleway-Medium.woff') format('woff'),
@@ -37,29 +38,28 @@
        url('./fonts/Raleway-Medium.ttf') format('truetype');
 	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
-body {
-	padding-top: 15px;
-	padding-bottom: 20px;
-	text-align: left;
-	font-family: 'Raleway-Medium';
-}
+
 p {
 	padding-left: 2%;
 	padding-bottom: 1%;
 }
+
 .menu {
 	color: purple;
 	padding-top: 5%;
 	font-size: 150%;
 }
+
 .aviso {
 	color: red;
 }
+
 .footerText {
 	padding-top: 3%;
 	color: white;
 	font-family: 'Raleway-SemiBold';
 }
+
 #footerBar {
 	height: 15%;
 	background-color: #aa86d0;
@@ -67,6 +67,7 @@ p {
 	bottom: 0;
 	width: 100%;
 }
+
 .sides {
 	margin: 2%;
 	border: 2%;
@@ -78,6 +79,7 @@ p {
 	margin-bottom: 6%;
 	display: inline-block;
 }
+
 .left {
 	text-align: left;
 	float: left;
@@ -87,6 +89,7 @@ p {
 	margin-left: 10%;
 	height: 100px;
 }
+
 .right {
 	text-align: right;
 	float: right;
@@ -94,38 +97,58 @@ p {
 	overflow: hidden;
 	margin-right: 10%;
 }
+
 .down {
-	width: 30%;
-	height: 35px;
+	width: 100%;
+	height: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
 	background-color: #dd5855;
 }
+
 .up {
-	width: 30%;
-	height: 35px;
+	width: 100%;
+	height: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
 	background-color: #60bb7d;
 }
+
 .display {
-	width: 40%;
-	height: 35px;
+	width: 100%;
+	height: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
 	border: solid 1px #ebebeb;
 	text-align: center;
 }
+
 .product {
 	width: 100%;
 	height: 100px;
 	margin: 1%;
 }
+
 .contador {
 	width: 50%;
 	margin-left: 50%;
 	display: inline-flex;
 }
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 </style>
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-<!-- <title>Bigode</title>  -->
 
 </head>
 <body>
@@ -218,6 +241,36 @@ p {
 		<div id="footerBar">
 			<p class="footerText">Preço total: R$ 0,00</p>
 		</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+				<img alt="default-placeholder" src="img/default-placeholder.png"
+					width="100%" height="100%">
+			</div>
+			<div class="col-xs-8">
+				<div class="row">
+					<div class="col-xs-8">Nome</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-8">Preco</div>
+				</div>
+				<div class="row no-gutters">
+					<div class="col-xs-3">
+						<button class="down" onclick="modify_qty(-1, this)">-</button>
+
+					</div>
+					<div class="col-xs-2">
+						<input class="display" disabled id="qty" value="0" />
+
+					</div>
+					<div class="col-xs-3">
+						<button class="up" onclick="modify_qty(1, this)">+</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 		<!-- /container -->
 
