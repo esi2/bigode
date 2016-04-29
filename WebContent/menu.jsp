@@ -71,8 +71,9 @@
 		%>
 		<div class="row">
 			<div class="col-xs-4">
-				<img alt="default-placeholder" class="imagem-produto" src="img/default-placeholder.png"
-					width="100%" height="100%">
+				<img class="imagem-rpoduto" src="data:image/jpeg;base64,<%=pic%>">
+				<!--  <img alt="default-placeholder" class="imagem-produto" src="img/default-placeholder.png"
+					width="100%" height="100%"> -->
 			</div>
 			<div class="col-xs-8">
 				<div class="row">
