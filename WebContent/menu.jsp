@@ -64,52 +64,11 @@
 		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
 	%>
 
-	<div id="sides">
-		<%
+	<div class="container produto-borda">
+	<%
 			for (int i = 0; i < products.size(); i += 3) {
 				String pic = products.get(i + 2);
 		%>
-		<div class="sides" id="sides">
-
-			<div class="product">
-				<div class="left">
-					<img src="data:image/jpeg;base64,<%=pic%>" width="100px"
-						height="100px">
-
-					<!-- <img alt="default-placeholder" src="img/default-placeholder.png" width="100%" height="100%"> -->
-				</div>
-				<div class="right">
-					<dl>
-						<dt class="nome">
-							<%
-								out.println(products.get(i));
-							%>
-						</dt>
-						<dd class="preco">
-							<%
-								out.println(products.get(i + 1));
-							%>
-						</dd>
-						<div class="contador">
-							<button class="down" onclick="modify_qty(-1, this)">-</button>
-
-							<input class="display" disabled id="qty" value="0" />
-
-							<button class="up" onclick="modify_qty(1, this)">+</button>
-						</div>
-					</dl>
-
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-	<%
-						}
-					%>
-
-	<div class="container produto-borda">
 		<div class="row">
 			<div class="col-xs-4">
 				<img alt="default-placeholder" class="imagem-produto" src="img/default-placeholder.png"
@@ -117,12 +76,24 @@
 			</div>
 			<div class="col-xs-8">
 				<div class="row">
-					<div class="col-xs-8"><p class="nome-produto">Nome</p></div>
+					<div class="col-xs-8">
+						<p class="nome-produto">
+							<%
+								out.println(products.get(i));
+							%>
+						</p>
+					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-8"><p class="preco-produto">Preco</p></div>
+					<div class="col-xs-8">
+						<p class="preco-produto">
+							<%
+								out.println(products.get(i + 1));
+							%>
+						</p>
+					</div>
 				</div>
-				<div class="row no-gutters">
+				<div class="row no-gutters contador">
 					<div class="col-xs-3">
 						<button class="down" onclick="modify_qty(-1, this)">-</button>
 
@@ -138,7 +109,9 @@
 			</div>
 		</div>
 	</div>
-
+	<%
+						}
+					%>
 	<!-- /container -->
 
 
