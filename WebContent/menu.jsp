@@ -64,11 +64,13 @@
 		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
 	%>
 
-	<div class="container produto-borda">
 	<%
 			for (int i = 0; i < products.size(); i += 3) {
 				String pic = products.get(i + 2);
 		%>
+		
+	<div class="container produto-borda">
+
 		<div class="row">
 			<div class="col-xs-4">
 				<img class="imagem-produto" src="data:image/jpeg;base64,<%=pic%>">
