@@ -23,7 +23,6 @@
        url('./fonts/Raleway-Light.ttf') format('truetype');
 	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
-
 @font-face {
 	font-family: 'Raleway-SemiBold';
 	src: url('./fonts/Raleway-SemiBold.woff') format('woff'),
@@ -31,7 +30,6 @@
        url('./fonts/Raleway-SemiBold.ttf') format('truetype');
 	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
-
 @font-face {
 	font-family: 'Raleway-Medium';
 	src: url('./fonts/Raleway-Medium.woff') format('woff'),
@@ -39,35 +37,29 @@
        url('./fonts/Raleway-Medium.ttf') format('truetype');
 	/* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
-
 body {
 	padding-top: 15px;
 	padding-bottom: 20px;
 	text-align: left;
 	font-family: 'Raleway-Medium';
 }
-
 p {
 	padding-left: 2%;
 	padding-bottom: 1%;
 }
-
 .menu {
 	color: purple;
 	padding-top: 5%;
 	font-size: 150%;
 }
-
 .aviso {
 	color: red;
 }
-
 .footerText {
 	padding-top: 3%;
 	color: white;
 	font-family: 'Raleway-SemiBold';
 }
-
 #footerBar {
 	height: 15%;
 	background-color: #aa86d0;
@@ -75,7 +67,6 @@ p {
 	bottom: 0;
 	width: 100%;
 }
-
 .sides {
 	margin: 2%;
 	border: 2%;
@@ -87,7 +78,6 @@ p {
 	margin-bottom: 6%;
 	display: inline-block;
 }
-
 .left {
 	text-align: left;
 	float: left;
@@ -97,7 +87,6 @@ p {
 	margin-left: 10%;
 	height: 100px;
 }
-
 .right {
 	text-align: right;
 	float: right;
@@ -105,32 +94,27 @@ p {
 	overflow: hidden;
 	margin-right: 10%;
 }
-
 .down {
 	width: 30%;
 	height: 35px;
 	background-color: #dd5855;
 }
-
 .up {
 	width: 30%;
 	height: 35px;
 	background-color: #60bb7d;
 }
-
 .display {
 	width: 40%;
 	height: 35px;
 	border: solid 1px #ebebeb;
 	text-align: center;
 }
-
 .product {
 	width: 100%;
 	height: 100px;
 	margin: 1%;
 }
-
 .contador {
 	width: 50%;
 	margin-left: 50%;
@@ -147,15 +131,12 @@ p {
 <body>
 	<script type="text/javascript">
 		function modify_qty(val, elem) {
-
 			var input = elem.parentElement.children[1];
 			var new_qty = parseInt(input.value, 10) + val;
-
 			if (new_qty < 0) {
 				new_qty = 0;
 			}
 			
-
 			input.value = new_qty;
 			
 			var displays = document.getElementsByClassName('display');
@@ -167,7 +148,6 @@ p {
 			}
 			
 			document.getElementsByClassName('footerText')[0].innerText = "Preço Total: R$ " + soma + ",00";
-
 			
 			return new_qty;
 		}
@@ -246,7 +226,6 @@ p {
 				return '<p>Você está na Mesa ' + mesa + ' do Bar ' + bar
 						+ '</p>';
 			}
-
 			function templateProduct(nomeProduto, preco) {
 				var templateProduto = '<dl>\n\
 									<dt>' + nomeProduto
@@ -254,7 +233,6 @@ p {
 									<dd>' + preco
 						+ '</dd>\n\
 								</dl>';
-
 				return templateProduto;
 			}
 		</script>
