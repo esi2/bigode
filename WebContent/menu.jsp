@@ -51,8 +51,9 @@
 		</a>
 	</div>
 	<div id="menu-title">
-		<p class="menu">Peca tudo o que quiser! ;)</p>
+		<p class="titulo">Peca tudo o que quiser! ;)</p>
 		<!-- append templateName aqui  -->
+		<p>Você está na Mesa X do Bar Y</p>
 		<p class="aviso">O que você pedir por aqui será incluido na conta
 			da sua mesa e será pago tudo junto quando sua conta vier.</p>
 	</div>
@@ -108,18 +109,18 @@
 						}
 					%>
 
-	<div class="container">
+	<div class="container produto-borda">
 		<div class="row">
 			<div class="col-xs-4">
-				<img alt="default-placeholder" src="img/default-placeholder.png"
+				<img alt="default-placeholder" class="imagem-produto" src="img/default-placeholder.png"
 					width="100%" height="100%">
 			</div>
 			<div class="col-xs-8">
 				<div class="row">
-					<div class="col-xs-8">Nome</div>
+					<div class="col-xs-8"><p class="nome-produto">Nome</p></div>
 				</div>
 				<div class="row">
-					<div class="col-xs-8">Preco</div>
+					<div class="col-xs-8"><p class="preco-produto">Preco</p></div>
 				</div>
 				<div class="row no-gutters">
 					<div class="col-xs-3">
