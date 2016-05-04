@@ -21,27 +21,73 @@
 </head>
 <body>
 	<script type="text/javascript">
-		function modify_qty(val, elem) {
-			var input = elem.parentElement.children[1];
+		function modifyQty(val, elem) {
+			var input = elem.parentElement.parentElement
+					.getElementsByClassName('display')[0];
 			var new_qty = parseInt(input.value, 10) + val;
 			if (new_qty < 0) {
 				new_qty = 0;
 			}
-			
+
 			input.value = new_qty;
+
+			updateTotal();
 			
+			return new_qty;
+		}
+
+		function modifyQtyBlur(elem) {
+			var new_qty = parseInt(elem.value, 10);
+			if (new_qty < 0) {
+				new_qty = 0;
+			}
+
+			elem.value = new_qty;
+
+			updateTotal();
+			
+			return new_qty;
+		}
+
+		function updateTotal() {
 			var displays = document.getElementsByClassName('display');
-			var prices = document.getElementsByClassName('preco');
+			var prices = document.getElementsByClassName('preco-produto');
 			var soma = 0;
 			for (var i = 0; i < displays.length; i++) {
 				soma += (parseInt(displays[i].value, 10) * parseInt(
 						prices[i].innerText, 10));
 			}
-			
-			document.getElementsByClassName('footerText')[0].innerText = "Preço Total: R$ " + soma + ",00";
-			
-			return new_qty;
+
+			document.getElementsByClassName('footerText')[0].innerText = "Preço Total: R$ "
+					+ soma + ",00";
+
 		}
+		
+		function order(){			
+			var displays = document.getElementsByClassName('display');
+			var prices = document.getElementsByClassName('preco-produto');
+			var names = document.getElementsByClassName('nome-produto');
+			
+			var list = new Array();
+			for (var i = 0; i < displays.length; i++) {
+				var item = {};
+				if(parseInt(displays[i].value, 10) > 0){
+					item.name = names[i].innerText;
+					item.qty = displays[i].value;
+					item.total = (parseInt(displays[i].value, 10) * parseInt(
+							prices[i].innerText, 10));
+				}
+				list.push(item);
+			}
+			
+			var space = document.getElementsByClassName('footerText')[0].innerText.split(" ");
+			
+			var order = {
+					list: list,
+					total: parseInt(space[3], 10)
+			}
+		}
+		
 	</script>
 
 	<div class="header clearfix" align="center">
@@ -65,10 +111,10 @@
 	%>
 
 	<%
-			for (int i = 0; i < products.size(); i += 3) {
-				String pic = products.get(i + 2);
-		%>
-		
+		for (int i = 0; i < products.size(); i += 3) {
+			String pic = products.get(i + 2);
+	%>
+
 	<div class="container produto-borda">
 
 		<div class="row">
@@ -98,45 +144,50 @@
 				</div>
 				<div class="row no-gutters contador">
 					<div class="col-xs-3">
-						<button class="down" onclick="modify_qty(-1, this)">-</button>
+						<button class="button-2d down" onclick="modifyQty(-1, this)">-</button>
 
 					</div>
-					<div class="col-xs-2">
-						<input class="display" disabled id="qty" value="0" />
+					<div class="col-xs-2" style="width: 30%;">
+						<input class="display" id="qty" onblur="modifyQtyBlur(this)"
+							value="0" />
 
 					</div>
 					<div class="col-xs-3">
-						<button class="up" onclick="modify_qty(1, this)">+</button>
+						<button class="button-2d up" onclick="modifyQty(1, this)">+</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<%
-						}
-					%>
+		}
+	%>
 	<!-- /container -->
 
 
 	<div id="footerBar">
-		<p class="footerText">Preço total: R$ 0,00</p>
+		<div class="button-place right">
+			<button id="submit-btn" class="button-pedido button-2d" onclick="order()">
+				<p class="font-pedido">Fazer Pedido</p>
+			</button>
+		</div>
+		<p class="footerText">Preço Total: R$ 0,00</p>
 	</div>
 
 
 	<script>
-			function templateName(mesa, bar) {
-				return '<p>Você está na Mesa ' + mesa + ' do Bar ' + bar
-						+ '</p>';
-			}
-			function templateProduct(nomeProduto, preco) {
-				var templateProduto = '<dl>\n\
+		function templateName(mesa, bar) {
+			return '<p>Você está na Mesa ' + mesa + ' do Bar ' + bar + '</p>';
+		}
+		function templateProduct(nomeProduto, preco) {
+			var templateProduto = '<dl>\n\
 									<dt>' + nomeProduto
-						+ '</dt>\n\
+					+ '</dt>\n\
 									<dd>' + preco
-						+ '</dd>\n\
+					+ '</dd>\n\
 								</dl>';
-				return templateProduto;
-			}
-		</script>
+			return templateProduto;
+		}
+	</script>
 </body>
 </html>
