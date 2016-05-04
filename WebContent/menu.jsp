@@ -86,6 +86,8 @@
 					list: list,
 					total: parseInt(space[3], 10)
 			}
+			
+			return order;
 		}
 		
 	</script>
