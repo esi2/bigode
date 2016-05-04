@@ -13,12 +13,16 @@ public class AppTest {
   private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
+  static {
+	    java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(java.util.logging.Level.SEVERE);
+	}
 
   @Before
   public void setUp() throws Exception {
     driver = new HtmlUnitDriver();
     baseUrl = "http://143.107.58.177:8080/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    
   }
 
   @Test
