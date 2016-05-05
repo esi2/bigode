@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="css/bigode-dono.css">
 
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -67,6 +68,7 @@
 			var displays = document.getElementsByClassName('display');
 			var prices = document.getElementsByClassName('preco-produto');
 			var names = document.getElementsByClassName('nome-produto');
+			var ids = document.getElementsByClassName('id_prod');
 			
 			var list = new Array();
 			for (var i = 0; i < displays.length; i++) {
@@ -74,7 +76,8 @@
 				if(parseInt(displays[i].value, 10) > 0){
 					item.name = names[i].innerText;
 					item.qty = displays[i].value;
-					item.total = (parseInt(displays[i].value, 10) * parseInt(
+					item.id =  ids[i].value;
+                                        item.total = (parseInt(displays[i].value, 10) * parseInt(
 							prices[i].innerText, 10));
 				}
 				list.push(item);
@@ -87,7 +90,10 @@
 					total: parseInt(space[3], 10)
 			}
 			
-			return order;
+			var jString = JSON.stringify(order);
+                        document.getElementById('jsonPedido').value=jString;
+  
+
 		}
 		
 	</script>
@@ -98,22 +104,27 @@
 			src="./img/Marca/bigode-marca-horizontal.png">
 		</a>
 	</div>
+        <%
+            BigodeDAO bgd = new BigodeDAOImpl();
+            String nome = bgd.getNomeBar(Integer.parseInt(request.getParameter("bar")));
+        
+        %>
 	<div id="menu-title">
 		<p class="titulo">Peca tudo o que quiser! ;)</p>
 		<!-- append templateName aqui  -->
-		<p>Você está na Mesa X do Bar Y</p>
+		<p>Você está na Mesa <%=request.getParameter("codMesa")%> do Bar <%=nome%></p>
 		<p class="aviso">O que você pedir por aqui será incluido na conta
 			da sua mesa e será pago tudo junto quando sua conta vier.</p>
 	</div>
 
 	<%
-		BigodeDAO bgd = new BigodeDAOImpl();
+		
 		ArrayList<String> products = new ArrayList<String>();
 		products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
 	%>
 
 	<%
-		for (int i = 0; i < products.size(); i += 3) {
+		for (int i = 0; i < products.size(); i += 4) {
 			String pic = products.get(i + 2);
 	%>
 
@@ -144,6 +155,13 @@
 						</p>
 					</div>
 				</div>
+                                <div class="row">
+					<div class="col-xs-8">
+						<p class="id_produto">
+                                                    <input type="hidden" class='id_prod' value="<%=products.get(i+3)%>">
+						</p>
+					</div>
+				</div>
 				<div class="row no-gutters contador">
 					<div class="col-xs-3">
 						<button class="button-2d down" onclick="modifyQty(-1, this)">-</button>
@@ -169,14 +187,16 @@
 
 	<div id="footerBar">
 		<div class="button-place right">
-			<button id="submit-btn" class="button-pedido button-2d" onclick="order()">
+			<button id="submit-btn" class="button-pedido button-2d" onclick="order();jsonForm.submit()">
 				<p class="font-pedido">Fazer Pedido</p>
 			</button>
 		</div>
 		<p class="footerText">Preço Total: R$ 0,00</p>
 	</div>
 
-
+        <form name='jsonForm' action='Pedido' method='Post'>
+            <input type='hidden' id='jsonPedido' name='jsonPedido' class='jsonPedido'>
+        </form>
 	<script>
 		function templateName(mesa, bar) {
 			return '<p>Você está na Mesa ' + mesa + ' do Bar ' + bar + '</p>';

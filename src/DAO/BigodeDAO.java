@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface BigodeDAO {
 	
-	/*[12.04.2016 HEBERT] - Implementacao DAO
+	/*Implementacao DAO
 	 * @return Retorna todos os dados da Union BAR com MESA
 	 */
 	public boolean checaBarMesa(int bar, int mesa);
@@ -17,5 +17,13 @@ public interface BigodeDAO {
 	 * @return
 	 */
 	public ArrayList<String> listaProduto(int id_bar);
-
+        
+        /**
+         * 
+         * @param idBar
+         * @return 
+         */
+        public String getNomeBar(int idBar);
+        
+        
 }

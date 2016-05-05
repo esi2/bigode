@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,9 +51,12 @@ body {
 					sua mesa!</p>
 				<p>
 					<%
-						if (request.getParameter("msg") != null) {
+						if (request.getParameter("msg") != null && !request.getParameter("msg").equals("pedido")) {
 							out.println("<h2 style=\"color:red\">Mesa inválida</h2>");
-						}
+						} else  if (request.getParameter("msg") != null && request.getParameter("msg").equals("pedido")) {
+                                                        out.println("<h2 style=\"color:red\">Pedido realizado com sucesso!</h2>");
+                                                }
+						
 					%>
 				
 				<form role="form" action="ConectaEstabelecimento" method="get">
