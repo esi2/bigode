@@ -86,7 +86,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 			return result;}
 
     @Override
-    public void inserePedido(int id, int qtd, String numMesa) {
+    public void inserePedido(int id, int qtd, int numMesa) {
         Connection conn = ConnectionManager.getInstance().getConnection();
          String insertPedido = "INSERT INTO PEDIDO VALUES (null,"+numMesa+", "+id+", "+qtd+", 'ativo')";
                  Statement st;

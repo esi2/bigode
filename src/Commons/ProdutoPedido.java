@@ -12,6 +12,7 @@ package Commons;
 public class ProdutoPedido {
     private int qty = 0;
     private int id = 0;
+    private int mesa = 0;
 
     /**
      * @return the qtd
@@ -39,6 +40,20 @@ public class ProdutoPedido {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the mesa
+     */
+    public int getMesa() {
+        return mesa;
+    }
+
+    /**
+     * @param mesa the mesa to set
+     */
+    public void setMesa(int mesa) {
+        this.mesa = mesa;
     }
     
 }

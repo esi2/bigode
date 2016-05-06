@@ -75,13 +75,15 @@
                 var prices = document.getElementsByClassName('preco-produto');
                 var names = document.getElementsByClassName('nome-produto');
                 var ids = document.getElementsByClassName('id_prod');
+                var mesa = getQueryVariable('codMesa');
 
                 var list = new Array();
                 for (var i = 0; i < displays.length; i++) {
                     var item = {};
                     if (parseInt(displays[i].value, 10) > 0) {
-                         item.id = ids[i].value;            
-                         item.qty = displays[i].value;
+                        item.id = ids[i].value;
+                        item.qty = displays[i].value;
+                        item.mesa = mesa;
                     }
                     list.push(item);
                 }
@@ -94,12 +96,25 @@
 
                 var jString = JSON.stringify(order);
                 document.getElementById('jsonPedido').value = jString;
-                document.getElementById('jsonPedido').value += " XX" +<%=request.getParameter("codMesa")%>;
+
 
 
             }
-
+            
+    function getQueryVariable(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                
+            }
         </script>
+
+
 
         <div class="header clearfix" align="center">
             <a href="index.jsp"> <img alt="LogoHorizontal"
@@ -191,7 +206,7 @@
         <div id="footerBar">
             <div class="button-place right">
                 <button id="submit-btn" class="button-pedido button-2d" onclick="order();
-                                jsonForm.submit()">
+                        jsonForm.submit()">
                     <p class="font-pedido">Fazer Pedido</p>
                 </button>
             </div>
@@ -200,6 +215,7 @@
 
         <form name='jsonForm' action='Pedido' method='Post'>
             <input type='hidden' id='jsonPedido' name='jsonPedido' class='jsonPedido'>
+
         </form>
         <script>
             function templateName(mesa, bar) {
