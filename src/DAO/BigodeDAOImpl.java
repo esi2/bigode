@@ -84,4 +84,18 @@ public class BigodeDAOImpl implements BigodeDAO {
 			}
 
 			return result;}
+
+    @Override
+    public void inserePedido(int id, int qtd, String numMesa) {
+        Connection conn = ConnectionManager.getInstance().getConnection();
+         String insertPedido = "INSERT INTO PEDIDO VALUES (null,"+numMesa+", "+id+", "+qtd+", 'ativo')";
+                 Statement st;
+        try {
+            st = (Statement) conn.createStatement();
+            st.execute(insertPedido);
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.toString());
+        }
+    }
 }

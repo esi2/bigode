@@ -5,6 +5,9 @@
  */
 package com.bd.pkg;
 
+import Commons.ProdutoPedido;
+import DAO.BigodeDAO;
+import DAO.BigodeDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.gson.*;
 
 /**
  *
@@ -37,7 +41,7 @@ public class Pedido extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Pedido</title>");            
+            out.println("<title>Servlet Pedido</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Pedido at " + request.getContextPath() + "</h1>");
@@ -72,8 +76,31 @@ public class Pedido extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String pedido = request.getParameter("jsonPedido");
-       response.sendRedirect("index.jsp?msg=pedido"); 
+        
+        //Recebe String do pedido e num mesa => pedido | numMesa
+        String pedidoComMesa = request.getParameter("jsonPedido");
+        System.out.println(pedidoComMesa);
+        //Separa em variaveis pedido e mesa
+        String parts[] = pedidoComMesa.split("XX");
+        String pedido = parts[0];
+        String mesa = parts[1];
+        
+        Gson gson = new Gson();
+        //Começa tratar objeto Json como array
+        JsonParser parser = new JsonParser();
+        JsonArray Jarray = (JsonArray) parser.parse(pedido).getAsJsonObject().getAsJsonArray("list");
+        BigodeDAO bgd = new BigodeDAOImpl(); 
+        //A cada elemento do array de json atribui para a classe e insere
+        for (JsonElement obj : Jarray) {
+         ProdutoPedido pp =  gson.fromJson(obj, ProdutoPedido.class);
+         if(pp.getQty() > 0){
+         System.out.println(pp.getId());
+         System.out.println(pp.getQty());
+         bgd.inserePedido(pp.getId(), pp.getQty(), mesa);
+         
+         }
+         }
+        response.sendRedirect("index.jsp?msg=pedido");
     }
 
     /**

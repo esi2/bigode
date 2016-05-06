@@ -25,5 +25,12 @@ public interface BigodeDAO {
          */
         public String getNomeBar(int idBar);
         
+        /**
+         * 
+         * @param id
+         * @param qtd 
+         */
+        public void inserePedido(int id, int qtd, String numMesa);
+        
         
 }

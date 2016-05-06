@@ -80,11 +80,8 @@
                 for (var i = 0; i < displays.length; i++) {
                     var item = {};
                     if (parseInt(displays[i].value, 10) > 0) {
-                        item.name = names[i].innerText;
-                        item.qty = displays[i].value;
-                        item.id = ids[i].value;
-                        item.total = (parseInt(displays[i].value, 10) * parseInt(
-                                prices[i].innerText, 10));
+                         item.id = ids[i].value;            
+                         item.qty = displays[i].value;
                     }
                     list.push(item);
                 }
@@ -92,12 +89,12 @@
                 var space = document.getElementsByClassName('footerText')[0].innerText.split(" ");
 
                 var order = {
-                    list: list,
-                    total: parseInt(space[3], 10)
+                    list: list
                 }
 
                 var jString = JSON.stringify(order);
                 document.getElementById('jsonPedido').value = jString;
+                document.getElementById('jsonPedido').value += " XX" +<%=request.getParameter("codMesa")%>;
 
 
             }
