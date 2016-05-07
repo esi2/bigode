@@ -69,7 +69,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 			try {
 				Connection conn = ConnectionManager.getInstance().getConnection();
 
-				String sql = "SELECT NOME_BAR from bar where ID_BAR="+idBar;
+				String sql = "SELECT NOME_BAR from BAR where ID_BAR="+idBar;
 
 				st = (Statement) conn.createStatement();
 				ResultSet rs = st.executeQuery(sql);
