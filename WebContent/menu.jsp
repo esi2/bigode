@@ -138,7 +138,7 @@
         <%
 
             ArrayList<String> products = new ArrayList<String>();
-            products = bgd.listaProduto(Integer.parseInt(request.getParameter("codMesa")));
+            products = bgd.listaProduto(Integer.parseInt(request.getParameter("bar")));
         %>
 
         <%
