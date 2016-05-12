@@ -30,7 +30,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.toString());
 		}
-                ConnectionManager.getInstance().close();
+                //ConnectionManager.getInstance().close();
 		return false;
 
 	}
@@ -58,7 +58,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 			} catch (Exception e) {
 				System.out.println("Erro: " + e.toString());
 			}
-                        ConnectionManager.getInstance().close();
+                        //ConnectionManager.getInstance().close();
 			return result;
 	}
 
@@ -82,7 +82,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 			} catch (Exception e) {
 				System.out.println("Erro: " + e.toString());
 			}
-                        ConnectionManager.getInstance().close();
+                        //ConnectionManager.getInstance().close();
 			return result;}
 
     @Override
@@ -97,6 +97,6 @@ public class BigodeDAOImpl implements BigodeDAO {
         } catch (Exception e) {
             System.out.println("Erro: " + e.toString());
         }
-        ConnectionManager.getInstance().close();
+        //ConnectionManager.getInstance().close();
     }
 }
