@@ -49,7 +49,6 @@ public class AppTest {
     driver.findElement(By.cssSelector("button.button-2d.down")).click();
     assertEquals("0", driver.findElement(By.id("qty")).getAttribute("value"));
     assertTrue(driver.findElement(By.cssSelector("p.footerText")).getText().contains("R$ 0,00"));
-    //assertEquals("Preço Total: R$ 0,00", driver.findElement(By.cssSelector("p.footerText")).getText());
   }
 
   @After
