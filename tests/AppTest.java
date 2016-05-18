@@ -38,6 +38,18 @@ public class AppTest {
     driver.findElement(By.xpath("//button[@value='Send']")).click();
     assertTrue(driver.findElement(By.cssSelector("p.footerText")).getText().contains("R$ 0,00"));
   }
+  
+ @Test
+  public void testANumeroNegativo() throws Exception {
+    driver.get(baseUrl + "/bigode/");
+    driver.findElement(By.id("codigoMesa")).clear();
+    driver.findElement(By.id("codigoMesa")).sendKeys("1_1");
+    driver.findElement(By.xpath("//button[@value='Send']")).click();
+    driver.findElement(By.cssSelector("button.button-2d.down")).click();
+    assertEquals("0", driver.findElement(By.id("qty")).getAttribute("value"));
+    assertTrue(driver.findElement(By.cssSelector("p.footerText")).getText().contains("R$ 0,00"));
+    //assertEquals("Preço Total: R$ 0,00", driver.findElement(By.cssSelector("p.footerText")).getText());
+  }
 
   @After
   public void tearDown() throws Exception {
