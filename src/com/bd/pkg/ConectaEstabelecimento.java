@@ -54,7 +54,7 @@ public class ConectaEstabelecimento extends HttpServlet {
 			System.out.println(clienteDAO.checaBarMesa(bar, mesa));
 			
 			if(clienteDAO.checaBarMesa(bar, mesa)){
-				response.sendRedirect("menu.jsp?codMesa="+bar);	
+				response.sendRedirect("menu.jsp?codMesa="+mesa+"&bar="+bar);	
 			}else{
 				response.sendRedirect("index.jsp?msg=Erro");	
 			}

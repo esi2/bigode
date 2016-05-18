@@ -12,7 +12,7 @@ public class ConnectionManager {
 
 	private Connection conn = null;
 
-	private ConnectionManager() {
+	ConnectionManager() {
 	}
 
 	public static ConnectionManager getInstance() {

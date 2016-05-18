@@ -30,7 +30,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.toString());
 		}
-
+                ConnectionManager.getInstance().close();
 		return false;
 
 	}
@@ -42,7 +42,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 			try {
 				Connection conn = ConnectionManager.getInstance().getConnection();
 
-				String sql = "SELECT NOME_PRODUTO, PRECO_PRODUTO, FOTO_PRODUTO FROM PRODUTO WHERE ID_BAR="+id_bar;
+				String sql = "SELECT NOME_PRODUTO, PRECO_PRODUTO, FOTO_PRODUTO, ID_PRODUTO FROM PRODUTO WHERE ID_BAR="+id_bar;
 
 				st = (Statement) conn.createStatement();
 				ResultSet rs = st.executeQuery(sql);
@@ -50,6 +50,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 					result.add(rs.getString(1));
 					result.add(rs.getString(2));
 					result.add(rs.getString(3));
+					result.add(rs.getString(4));
 					
 				}
 					
@@ -57,7 +58,45 @@ public class BigodeDAOImpl implements BigodeDAO {
 			} catch (Exception e) {
 				System.out.println("Erro: " + e.toString());
 			}
-
+                        ConnectionManager.getInstance().close();
 			return result;
 	}
+
+    @Override
+    public String getNomeBar(int idBar) {
+    	String result ="";
+			Statement st;
+			try {
+				Connection conn = ConnectionManager.getInstance().getConnection();
+
+				String sql = "SELECT NOME_BAR from BAR where ID_BAR="+idBar;
+
+				st = (Statement) conn.createStatement();
+				ResultSet rs = st.executeQuery(sql);
+				if(rs.next()){
+					result = rs.getString(1);
+					
+				}
+					
+
+			} catch (Exception e) {
+				System.out.println("Erro: " + e.toString());
+			}
+                        ConnectionManager.getInstance().close();
+			return result;}
+
+    @Override
+    public void inserePedido(int id, int qtd, int numMesa) {
+        Connection conn = ConnectionManager.getInstance().getConnection();
+         String insertPedido = "INSERT INTO PEDIDO VALUES (null,"+numMesa+", "+id+", "+qtd+", 'ativo')";
+                 Statement st;
+        try {
+            st = (Statement) conn.createStatement();
+            st.execute(insertPedido);
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.toString());
+        }
+        ConnectionManager.getInstance().close();
+    }
 }
