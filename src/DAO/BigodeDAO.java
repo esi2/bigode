@@ -31,7 +31,20 @@ public interface BigodeDAO {
          * @param qtd 
          * @param numMesa
          */
-        public void inserePedido(int id, int qtd, int numMesa);
+        public void inserePedido(int id, int qtd, int numMesa, int idSessao);
         
+        /**
+         * 
+         * @param id
+         * @param idMesa
+         * @param inicio
+         * @param fim
+         * @param status
+         * @param preco
+         * @param credito 
+         */
+        public int registraSession(int idMesa, String inicio, String fim, String status, int preco, int credito);
+       
+       
         
 }

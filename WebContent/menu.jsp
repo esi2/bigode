@@ -109,6 +109,7 @@
 
         <form name='jsonForm' action='Pedido' method='Post'>
             <input type='hidden' id='jsonPedido' name='jsonPedido' class='jsonPedido'>
+            <input type='hidden' id='sessao' name='sessao' value="<%=request.getParameter("sessao")%>">
 
         </form>
     </body>

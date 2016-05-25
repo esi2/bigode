@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.BigodeDAOImpl;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Servlet implementation class ConectaEstabelecimento
@@ -54,7 +56,9 @@ public class ConectaEstabelecimento extends HttpServlet {
 			System.out.println(clienteDAO.checaBarMesa(bar, mesa));
 			
 			if(clienteDAO.checaBarMesa(bar, mesa)){
-				response.sendRedirect("menu.jsp?codMesa="+mesa+"&bar="+bar);	
+                            
+                                int sessao = clienteDAO.registraSession(mesa, null, null, "ativa" , 0, 0);
+				response.sendRedirect("menu.jsp?codMesa="+mesa+"&bar="+bar+"&sessao="+sessao);	
 			}else{
 				response.sendRedirect("index.jsp?msg=Erro");	
 			}

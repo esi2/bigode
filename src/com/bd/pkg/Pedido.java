@@ -79,7 +79,8 @@ public class Pedido extends HttpServlet {
         
         //Recebe String do pedido e num mesa => pedido | numMesa
         String pedido = request.getParameter("jsonPedido");
-     System.out.println("PEDIDO"+ pedido);
+        String sessao = request.getParameter("sessao");
+        System.out.println("PEDIDO"+ pedido);
         
         Gson gson = new Gson();
         //Começa tratar objeto Json como array
@@ -92,7 +93,7 @@ public class Pedido extends HttpServlet {
          if(pp.getQty() > 0){
          System.out.println(pp.getId());
          System.out.println(pp.getQty());
-         bgd.inserePedido(pp.getId(), pp.getQty(), pp.getMesa());
+         bgd.inserePedido(pp.getId(), pp.getQty(), pp.getMesa(), Integer.parseInt(sessao));
          
          }
          }
