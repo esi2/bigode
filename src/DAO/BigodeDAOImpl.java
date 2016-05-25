@@ -26,11 +26,11 @@ public class BigodeDAOImpl implements BigodeDAO {
             if (rs.next()) {
                 return true;
             }
-
+            ConnectionManager.getInstance().close();
         } catch (Exception e) {
             System.out.println("Erro: " + e.toString());
         }
-        ConnectionManager.getInstance().close();
+
         return false;
 
     }
