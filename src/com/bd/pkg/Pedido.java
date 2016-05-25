@@ -87,7 +87,7 @@ public class Pedido extends HttpServlet {
         JsonParser parser = new JsonParser();
         JsonArray Jarray = (JsonArray) parser.parse(pedido).getAsJsonObject().getAsJsonArray("list");
         BigodeDAO bgd = new BigodeDAOImpl(); 
-        //A cada elemento do array de json atribui para a classe e insere
+        //A cada elemento do array de Json atribui para a classe e insere
         for (JsonElement obj : Jarray) {
          ProdutoPedido pp =  gson.fromJson(obj, ProdutoPedido.class);
          if(pp.getQty() > 0){
