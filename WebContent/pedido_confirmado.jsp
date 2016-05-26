@@ -28,33 +28,66 @@
 	
 	<div class="container">
 	
-		<div id="confirmado-title" class="col-xs-12">
-	            <p class="titulo">O pedido já foi para a cozinha!</p>
-	            <p class="font-texto"> Daqui a pouco o garçom chegará com tudo o que você pediu, já foi
-	            	meio caminho andado. </p>
+		<div id="pedido-cozinha">
+			<div id="confirmado-title" class="col-xs-12">
+		            <p class="titulo">O pedido já foi para a cozinha!</p>
+		            <p class="font-texto"> Daqui a pouco o garçom chegará com tudo o que você pediu, já foi
+		            	meio caminho andado. </p>
+			</div>
+			
+			
+			<div id="escolha" class="row">
+				
+				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
+					<button id="novo-pedido" class="btn btn-novo-pedido show">
+						<strong> Fazer um novo pedido </strong>
+					</button>
+				</div>
+				
+				
+				<div class="col-xs-12">
+					<br>
+					<p align="center"> <strong> Ou </strong> <p>
+				</div>
+	
+				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
+					<button id="fechar-conta" class="btn btn-fechar-conta show" onclick="pedirConta()">
+							<strong> Pedir a conta </strong>
+					</button>
+				</div>
+			
+			</div>
 		</div>
 		
-		<div id="escolha" class="row">
-			
-			<div id="btn-container" class="col-xs-10 col-xs-offset-1">
-				<button class="btn btn-novo-pedido show">
-					<strong> Fazer um novo pedido </strong>
-				</button>
+		<div id="pague-garcom" style="display: none">
+			<div id="confirmado-title" class="col-xs-12">
+	            <p class="titulo">Pague sua conta para o garçom!</p>
+	            <p class="font-texto"> Esperamos que tenham gostado do bar do Chaim. :] </p>
 			</div>
 			
+			<div id="escolha" class="row">
+				
+				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
+					<button id="dividir-conta" class="btn btn-novo-pedido show">
+						<strong> Dividir conta </strong>
+					</button>
+				</div>
+				
+				
+				<div class="col-xs-12">
+					<br>
+					<p align="center"> <strong> Ou </strong> <p>
+				</div>
+	
+				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
+					<button id="pagar-sozinho" class="btn btn-fechar-conta show">
+							<strong> Pagar sozinho </strong>
+					</button>
+				</div>
 			
-			<div class="col-xs-12">
-				<br>
-				<p align="center"> <strong> Ou </strong> <p>
 			</div>
-
-			<div id="btn-container" class="col-xs-10 col-xs-offset-1">
-				<button class="btn btn-fechar-conta show">
-						<strong> Pedir a conta </strong>
-				</button>
-			</div>
-		
 		</div>
+		
 		
 		<div class="row">
 			<br>
@@ -81,5 +114,22 @@
 	<div id="footerBar">
 	        <p class="footerText">Preço Total: R$ 0,00</p>
 	</div>
+	
+		<script>
+		function pedirConta(){
+			var domObj1 = document.getElementById("pedido-cozinha");
+			var domObj2 = document.getElementById("pague-garcom");
+			
+			if(domObj1.style.display = 'none'){
+				domObj1.style.display = 'block';
+				domObj2.style.display = 'none';
+			}
+			else{
+				domObj1.style.display = 'none';
+				domObj2.style.display = 'block';
+			}
+		}
+	</script>
+	
 </body>
 </html>
