@@ -24,7 +24,6 @@ public class AppTest {
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     
   }
-/*
   @Test
   public void testEntraSite() throws Exception {
 	  driver.get(baseUrl + "/bigode/");
@@ -50,7 +49,6 @@ public class AppTest {
     assertEquals("0", driver.findElement(By.id("qty")).getAttribute("value"));
     assertTrue(driver.findElement(By.cssSelector("p.footerText")).getText().contains("R$ 0,00"));
   }
-  */
 
   @After
   public void tearDown() throws Exception {
