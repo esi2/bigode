@@ -35,11 +35,12 @@
 		            	meio caminho andado. </p>
 			</div>
 			
+			<!-- Default Flow: Fazer novo pedido ou Pedir conta -->
 			
 			<div id="escolha" class="row">
 				
 				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
-					<button id="novo-pedido" class="btn btn-novo-pedido show">
+					<button id="novo-pedido" class="btn btn-novo-pedido show" onclick="">
 						<strong> Fazer um novo pedido </strong>
 					</button>
 				</div>
@@ -59,7 +60,9 @@
 			</div>
 		</div>
 		
-		<div id="pague-garcom" style="display: none">
+		<!-- Flow Pedir conta: Pagar sozinho ou dividir -->
+		
+		<div id="pague-escolha" style="display: none">
 			<div id="confirmado-title" class="col-xs-12">
 	            <p class="titulo">Pague sua conta para o garçom!</p>
 	            <p class="font-texto"> Esperamos que tenham gostado do bar do Chaim. :] </p>
@@ -88,10 +91,27 @@
 			</div>
 		</div>
 		
+		<!-- Flow Pagar Sozinho: Escolha pagar 10% -->
+		
+		<div id="pague-sozinho" style="display: none">
+			<div id="confirmado-title" class="col-xs-12">
+	            <p class="titulo">Pague sua conta para o garçom!</p>
+	            <p class="font-texto"> Esperamos que tenham gostado do bar do Chaim. :] </p>
+			</div>
+			
+			<div id="escolha" class="row">
+				<form action="">
+					<input type="checkbox" name="gorjeta" value="sim">
+						<p>Quero pagar os 10% do atendimento</p>
+				</form>
+			</div>
+		</div>
 		
 		<div class="row">
 			<br>
 		</div>
+		
+		<!-- Default: Exibir itens pedidos pela mesa -->
 		
 		<div id="pedidos" class="col-xs-12">
 			<div id="pedido1" class="row">
@@ -112,13 +132,25 @@
 	</div>
 	
 	<div id="footerBar">
-	        <p class="footerText">Preço Total: R$ 0,00</p>
-	</div>
+			<!-- Flow: Botao aparece apenas apos selecionar Pedir Conta -> Pagar Sozinho -->
+            <div class="button-place right" style="display: none">
+                <button id="submit-btn" class="button-pedido button-2d" onclick="">
+                    <p class="font-pedido">Pagar conta</p>
+                </button>
+            </div>
+            <p class="footerText">Preço Total: R$ 0,00</p>
+        </div>
+
+        <form name='jsonForm' action='Pedido' method='Post'>
+            <input type='hidden' id='jsonPedido' name='jsonPedido' class='jsonPedido'>
+            <input type='hidden' id='sessao' name='sessao' value="<%=request.getParameter("sessao")%>">
+
+        </form>
 	
 		<script>
 		function pedirConta(){
 			var domObj1 = document.getElementById("pedido-cozinha");
-			var domObj2 = document.getElementById("pague-garcom");
+			var domObj2 = document.getElementById("pague-escolha");
 			
 			if(domObj1.style.display = 'none'){
 				domObj1.style.display = 'block';
