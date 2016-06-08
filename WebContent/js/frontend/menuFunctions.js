@@ -37,7 +37,7 @@ function updateTotal() {
     soma += "";
     var number = soma.split(".");
 
-    document.getElementsByClassName('footerText')[0].innerText = "Preço Total: R$ " + number[0] + "," + (number[1] ? number[1] : "00");
+    document.getElementsByClassName('footerText')[0].innerText = "Preï¿½o Total: R$ " + number[0] + "," + (number[1] ? number[1] : "00");
 
 }
 
@@ -92,5 +92,5 @@ function onlyNumbers(evt) {
 }
 
 function templateName(mesa, bar) {
-    return '<p>Você está na Mesa ' + mesa + ' do Bar ' + bar + '</p>';
+    return '<p>Vocï¿½ estï¿½ na Mesa ' + mesa + ' do Bar ' + bar + '</p>';
 }

@@ -1,47 +1,21 @@
 import static org.junit.Assert.*;
 
-import java.util.logging.*;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import org.junit.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-public class EntrarMesaTests {
+public class EntrarMesaTests extends AbstractTests {
 	
 	private static final String mesaInvalidaXPath = "//div[h2/text()='Mesa inválida']";
 	private static final String acessarMenuXPath = "//button[@value='Send']";
 	
-	private static WebDriver driver;
-	private static String baseUrl;
-	
-	static {
-		baseUrl = "http://143.107.58.177:8080/bigode/";
-	    Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.SEVERE);
-	}
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-//		driver = new FirefoxDriver();
-		driver = new HtmlUnitDriver();
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		driver.quit();
-	}
-	
 	@Before
 	public void setup() throws Exception {
-		driver.get(baseUrl);
+		driver.get(BASE_URL);
 	}
 
 	@Test
 	public void testCodigoMesaValido() {
-		entrarCodigoMesa("1_1");
+		entrarCodigoMesa(CODIGO_MESA);
 		assertTrue(isElementPresent(By.id("submit-btn")));
 	}
 	
@@ -69,21 +43,7 @@ public class EntrarMesaTests {
 	}
 	
 	private char randomChar() {
-		int min = 0x21;
-		int max = 0x7E;
-		
-		Random random = new Random();
-		return (char) (random.nextInt((max - min) + 1) + min);
-	}
-	
-	private boolean isElementPresent(By by) {
-	    try {
-	    	driver.findElement(by);
-	    	return true;
-	    } 
-	    catch (Exception e) {
-	    	return false;
-	    }
+		return (char) randomInt(0x21, 0x7E);
 	}
 
 }
