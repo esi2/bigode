@@ -83,7 +83,7 @@ public class Pedido extends HttpServlet {
         System.out.println("PEDIDO"+ pedido);
         
         Gson gson = new Gson();
-        //Começa tratar objeto Json como array
+        //Comeï¿½a tratar objeto Json como array
         JsonParser parser = new JsonParser();
         JsonArray Jarray = (JsonArray) parser.parse(pedido).getAsJsonObject().getAsJsonArray("list");
         BigodeDAO bgd = new BigodeDAOImpl(); 
@@ -97,7 +97,7 @@ public class Pedido extends HttpServlet {
          
          }
          }
-        response.sendRedirect("index.jsp?msg=pedido");
+        response.sendRedirect("pedido_confirmado.jsp?msg=pedido");
     }
 
     /**
