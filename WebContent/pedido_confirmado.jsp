@@ -15,8 +15,23 @@
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <script src="js/frontend/menuFunctions.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $("#fechar-conta").click(function(){
+	        $("#escolha").hide();
+	        $("#pedido-cozinha").hide();
+	        $("#pague-escolha").show();
+	    });
+	    $("#pagar-sozinho").click(function(){
+	    	$("#pague-escolha").hide();
+	        $("#pague-sozinho").show();
+	        $("#botao-pagar").show();
+	    });
+	});
+</script>
 
 <title>Ô, Bigode!</title>
+
 </head>
 <body>
 	<div class="header clearfix" align="center">

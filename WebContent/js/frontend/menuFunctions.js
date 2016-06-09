@@ -94,16 +94,3 @@ function onlyNumbers(evt) {
 function templateName(mesa, bar) {
     return '<p>Voc� est� na Mesa ' + mesa + ' do Bar ' + bar + '</p>';
 }
-
-$(document).ready(function(){
-    $("#fechar-conta").click(function(){
-        $("#escolha").hide();
-        $("#pedido-cozinha").hide();
-        $("#pague-escolha").show();
-    });
-    $("#pagar-sozinho").click(function(){
-    	$("#pague-escolha").hide();
-        $("#pague-sozinho").show();
-        $("#botao-pagar").show();
-    });
-});
