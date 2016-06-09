@@ -218,3 +218,8 @@ IMG.centro {
     display: block;
     margin-left: auto;
     margin-right: auto }
+    
+IMG.redes-sociais{
+	max-height: 70px;
+	max-width: 70px;
+}

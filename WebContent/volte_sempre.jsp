@@ -45,13 +45,13 @@
 			</div>
 		
 			<div id="googlePlus" class="col-xs-4">
-				<img class="img-responsive centro" alt="" src="./img/RedesSociais/google+.png">
+				<img class="img-responsive centro redes-sociais" alt="" src="./img/RedesSociais/google+.png">
 			</div>
 			<div id="twitter" class="col-xs-4">
-				<img class="img-responsive centro" alt="" src="./img/RedesSociais/twitter.png">
+				<img class="img-responsive centro redes-sociais" alt="" src="./img/RedesSociais/twitter.png">
 			</div>	
 			<div id="link" class="col-xs-4">
-				<img class="img-responsive centro" alt="" src="./img/RedesSociais/link-open-flat.png">
+				<img class="img-responsive centro redes-sociais" alt="" src="./img/RedesSociais/link-open-flat.png">
 			</div>
 			
 		</div>
