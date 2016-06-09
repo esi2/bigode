@@ -87,7 +87,14 @@ public class BigodeDAOImpl implements BigodeDAO {
     @Override
     public void inserePedido(int id, int qtd, int numMesa, int idSessao) {
         Connection conn = ConnectionManager.getInstance().getConnection();
-        String insertPedido = "INSERT INTO PEDIDO VALUES (null," + numMesa + ", 'ativo', " + idSessao + ", " + id + ", " + qtd + " )";
+        
+        java.util.Date dt = new java.util.Date();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = sdf.format(dt);       
+        
+        
+        String insertPedido = "INSERT INTO PEDIDO "
+        					+ "VALUES (null," + numMesa + ", 'ativo', " + idSessao + ", " + id + ", " + currentTime + " )";
         Statement st;
         try {
             st = (Statement) conn.createStatement();
@@ -99,6 +106,7 @@ public class BigodeDAOImpl implements BigodeDAO {
 
         ConnectionManager.getInstance().close();
     }
+
 
     @Override
     public int registraSession(int idMesa, String inicio, String fim, String status, int preco, int credito) {
