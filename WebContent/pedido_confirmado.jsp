@@ -18,6 +18,23 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <title>Ô, Bigode!</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#fechar-conta").click(function(){
+        $("#escolha").hide();
+        $("#pedido-cozinha").hide();
+        $("#pague-escolha").show();
+        $("#botao-pagar").show();
+    });
+    $("#pagar-sozinho").click(function(){
+    	$("#pague-escolha").hide();
+        $("#pague-sozinho").show();
+    });
+});
+</script>
+
 </head>
 <body>
 	<div class="header clearfix" align="center">
@@ -28,7 +45,7 @@
 
 	<div class="container">
 
-		<div id="pedido-cozinha">
+		<div id="pedido-cozinha" style="display: block">
 			<div id="confirmado-title" class="col-xs-12">
 				<p class="titulo">O pedido já foi para a cozinha!</p>
 				<p class="font-texto">Daqui a pouco o garçom chegará com tudo o
@@ -171,7 +188,7 @@
 
 	<div id="footerBar" style="display: block">
 		<!-- Flow: Botao aparece apenas apos selecionar Pedir Conta -> Pagar Sozinho -->
-		<div class="button-place right" style="display: none">
+		<div id="botao-pagar" class="button-place right" style="display: none">
 			<button id="submit-btn" class="button-pedido button-2d" onclick="">
 				<p class="font-pedido">Pagar conta</p>
 			</button>
