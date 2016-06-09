@@ -41,14 +41,20 @@
 
 		<div id="redes-sociais" class="row">
 			<div id="facebook" class="col-xs-12">
-				<img class="img-responsive centro" align="middle" alt="" src="./img/RedesSociais/fb-share.png">
+				<a href="https://facebook.com"> 
+					<img class="img-responsive centro" align="middle" alt="" src="./img/RedesSociais/fb-share.png">
+				</a>
 			</div>
 		
 			<div id="googlePlus" class="col-xs-4">
-				<img class="img-responsive centro redes-sociais" alt="" src="./img/RedesSociais/google+.png">
+				<a href="https://googleplus.com">
+					<img class="img-responsive centro redes-sociais" alt="" src="./img/RedesSociais/google+.png">
+				</a>
 			</div>
 			<div id="twitter" class="col-xs-4">
-				<img class="img-responsive centro redes-sociais" alt="" src="./img/RedesSociais/twitter.png">
+				<a href="https://twitter.com">
+					<img class="img-responsive centro redes-sociais" alt="" src="./img/RedesSociais/twitter.png">
+				</a>
 			</div>	
 			<div id="link" class="col-xs-4">
 				<img class="img-responsive centro redes-sociais" alt="" src="./img/RedesSociais/link-open-flat.png">
