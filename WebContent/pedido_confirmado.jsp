@@ -204,23 +204,13 @@ $(document).ready(function(){
 	</form>
 
 	<script>
-		document.getElementById("fechar-conta").onclick = function (){
-			var domObj1 = document.getElementById("pedido-cozinha");
-			var domObj2 = document.getElementById("pague-escolha");
-			
-			if(domObj1.style.display = 'none'){
-				domObj1.style.display = 'block';
-				domObj2.style.display = 'none';
-			}
-			else{
-				domObj1.style.display = 'none';
-				domObj2.style.display = 'block';
-			}
-		}
-	
 		// Provisorio
 		document.getElementById("novo-pedido").onclick = function () {
 	        location.href = "http://143.107.58.177:8080/bigode/menu.jsp?codMesa=2&bar=1&sessao=0";
+	    };
+	    
+	    document.getElementById("botao-pagar").onclick = function () {
+	        location.href = "http://143.107.58.177:8080/bigode/volte_sempre.jsp";
 	    };
 	</script>
 	
