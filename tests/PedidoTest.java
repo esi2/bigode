@@ -25,6 +25,13 @@ public class PedidoTest extends AbstractTests {
 	@After
 	public void tearDown() throws Exception {
 	}
+	
+	@Test
+	  public void testANumeroNegativo() throws Exception {
+	    driver.findElement(By.cssSelector("button.button-2d.down")).click();
+	    assertEquals("0", driver.findElement(By.id("qty")).getAttribute("value"));
+	    assertTrue(driver.findElement(By.cssSelector("p.footerText")).getText().contains("R$ 0,00"));
+	  }
 
 	@Test
 	public void testCalculoPedido() {  
