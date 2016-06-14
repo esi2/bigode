@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import org.openqa.selenium.*;
 
-public class EntrarMesaTests extends AbstractTests {
+public class EntrarMesaTest extends AbstractTests {
 	
 	private static final String mesaInvalidaXPath = "//div[h2/text()='Mesa inválida']";
 	private static final String acessarMenuXPath = "//button[@value='Send']";

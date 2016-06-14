@@ -9,7 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.gargoylesoftware.htmlunit.JavaScriptPage;
 
-public class PedidoTests extends AbstractTests {
+public class PedidoTest extends AbstractTests {
 	
 	private static final String acessarMenuXPath = "//button[@value='Send']";
 
