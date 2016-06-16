@@ -25,7 +25,7 @@ public class EntrarMesaTest extends AbstractTests {
 //		assertTrue(isElementPresent(By.xpath(mesaInvalidaXPath)));
 //	}
 	
-	@Test
+/*	@Test
 	public void testCodigoMesaInvalido() {
 		StringBuilder str = new StringBuilder();
 		for (int i=0; i<=5; i++) {
@@ -35,7 +35,7 @@ public class EntrarMesaTest extends AbstractTests {
 		entrarCodigoMesa(str.toString());
 		assertTrue(isElementPresent(By.xpath(mesaInvalidaXPath)));
 	}
-	
+	*/
 	private void entrarCodigoMesa(String codigo) {
 		driver.findElement(By.id("codigoMesa")).clear();
 		driver.findElement(By.id("codigoMesa")).sendKeys(codigo);
