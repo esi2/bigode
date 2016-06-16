@@ -46,5 +46,5 @@ public interface BigodeDAO {
         public int registraSession(int idMesa, String inicio, String fim, String status, int preco, int credito);
        
        
-        
+        public ArrayList<String> listaPedidos (int idSessao);
 }

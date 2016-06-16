@@ -92,17 +92,36 @@ public class BigodeDAOImpl implements BigodeDAO {
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = sdf.format(dt);       
         
-        
+        int pedidoID=0;
         String insertPedido = "INSERT INTO PEDIDO "
-        					+ "VALUES (null," + numMesa + ", 'ativo', " + idSessao + ", " + id + ", " + currentTime + " )";
-        Statement st;
+        					+ "VALUES (null," + numMesa + ", 'PENDENTE', " + idSessao + ", '" + currentTime + " ')";
+        System.out.println(insertPedido);
+        PreparedStatement st;
         try {
-            st = (Statement) conn.createStatement();
-            st.execute(insertPedido);
+            st = conn.prepareStatement(insertPedido, Statement.RETURN_GENERATED_KEYS);
+            st.executeUpdate(insertPedido, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = st.getGeneratedKeys();
+            rs.next();
+            pedidoID = rs.getInt(1);
+            
+          
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.toString());
+        }
+        
+           String insertProdutoPedido = "INSERT INTO PRODUTO_PEDIDO (ID_PRODUTO_PEDIDO, ID_PRODUTO, ID_PEDIDO, QUANTIDADE) "
+        					+ "VALUES (null," + id + ", "+ pedidoID+", "+ qtd + ")";
+           System.out.println(insertProdutoPedido);
+           Statement st2;
+        try {
+            st2 = (Statement) conn.createStatement();
+            st2.execute(insertProdutoPedido);
 
         } catch (Exception e) {
             System.out.println("Erro: " + e.toString());
         }
+        
+        
 
         ConnectionManager.getInstance().close();
     }
@@ -116,7 +135,7 @@ public class BigodeDAOImpl implements BigodeDAO {
         int auto_id = 0;
         String currentTime = sdf.format(dt);
 
-        String insertPedido = "INSERT INTO SESSAO VALUES (null," + idMesa + ",'" + currentTime + "', null, 'ativo', '0.00', '0.00')";
+        String insertPedido = "INSERT INTO SESSAO VALUES (null," + idMesa + ",'" + currentTime + "', '" + currentTime + "', 'ATIVA', '0.00', '0.00')";
         System.out.println(insertPedido);
         PreparedStatement stmt;
         try {
@@ -133,4 +152,36 @@ public class BigodeDAOImpl implements BigodeDAO {
         ConnectionManager.getInstance().close();
         return auto_id;
     }
+
+    @Override
+    public ArrayList<String> listaPedidos(int idSessao) {
+    ArrayList<String> result = new ArrayList<String>();
+        Statement st;
+        try {
+            Connection conn = ConnectionManager.getInstance().getConnection();
+
+            String sql = "select "
+                    + "PEDIDO.ID_PEDIDO, SESSAO.ID_MESA, STATUS_SESSAO, SESSAO.ID_SESSAO,"
+                    + " PRODUTO_PEDIDO.ID_PRODUTO, QUANTIDADE, PRECO_PRODUTO, NOME_PRODUTO"
+                    + " from PEDIDO join PRODUTO_PEDIDO on PEDIDO.ID_PEDIDO=PRODUTO_PEDIDO.ID_PEDIDO"
+                    + " join PRODUTO on PRODUTO_PEDIDO.ID_PRODUTO = PRODUTO.ID_PRODUTO"
+                    + " JOIN SESSAO ON PEDIDO.ID_MESA = SESSAO.ID_MESA"
+                    + " where STATUS_SESSAO = 'ATIVA' AND SESSAO.ID_SESSAO="+ idSessao;
+
+            st = (Statement) conn.createStatement();
+            System.out.println(sql);
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                result.add(rs.getString("NOME_PRODUTO"));
+                result.add(String.valueOf((rs.getInt("QUANTIDADE"))));
+                result.add(String.valueOf(rs.getFloat("PRECO_PRODUTO")));
+                result.add(String.valueOf((rs.getInt("ID_PEDIDO"))));
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.toString());
+        }
+        ConnectionManager.getInstance().close();
+        return result;}
 }

@@ -97,7 +97,8 @@ public class Pedido extends HttpServlet {
          
          }
          }
-        response.sendRedirect("pedido_confirmado.jsp?msg=pedido");
+        
+        response.sendRedirect("pedido_confirmado.jsp?msg=pedido&sessao="+sessao);
     }
 
     /**

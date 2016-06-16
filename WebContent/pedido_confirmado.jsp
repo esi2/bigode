@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.BigodeDAOImpl"%>
+<%@page import="DAO.BigodeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -134,20 +137,30 @@
 		</div>
 
 		<!-- Default: Exibir itens pedidos pela mesa -->
-
+                <%
+                BigodeDAO bdg = new BigodeDAOImpl();
+                double total = 0.0;
+                ArrayList<String> results = new ArrayList<String>();
+                results = bdg.listaPedidos(Integer.parseInt(request.getParameter("sessao")));
+                %>
 		<div id="pedidos" class="col-xs-12">
 			<div id="pedido1" class="row">
-				<strong> Pedido 1 </strong>
+				<strong> Lista de Pedidos </strong>
+                                <%for(int x =0; x < results.size(); x +=4){
+                                    for(int qtd =0; qtd < Integer.parseInt(results.get(x+1)); qtd++){
+                                %>
 				<div class="col-xs-12 produto-borda">
 					<div class="col-xs-6">
-						<p class="nome-produto" align="left">Coxinha</p>
+						<p class="nome-produto" align="left"> <%=results.get(x)%>(s)</p>
 					</div>
 					<div class="col-xs-6">
-						<p class="preco-produto" align="right">R$ 100,00</p>
-					</div>
+						<p class="preco-produto" align="right">R$<%=results.get(x+2)%></p>
+                                                <%total +=Double.parseDouble(results.get(x+2));%>
+                                                
+                                        </div>
 
 				</div>
-
+                                <%}}%>
 			</div>
 		</div>
 
@@ -190,7 +203,7 @@
 				<p class="font-pedido">Pagar conta</p>
 			</button>
 		</div>
-		<p class="footerText">Preço Total: R$ 0,00</p>
+		<p class="footerText">Preço Total: R$ <%= total %></p>
 	</div>
 
 	<form name='jsonForm' action='Pedido' method='Post'>
@@ -202,12 +215,14 @@
 
 	<script>
 		// Provisorio
+                
 		document.getElementById("novo-pedido").onclick = function () {
-	        location.href = "http://143.107.58.177:8080/bigode/menu.jsp?codMesa=2&bar=1&sessao=0";
+                var sessao = <%=request.getParameter("sessao")%>;
+	        location.href = "menu.jsp?codMesa=2&bar=1&sessao="+sessao;
 	    };
 	    
 	    document.getElementById("botao-pagar").onclick = function () {
-	        location.href = "http://143.107.58.177:8080/bigode/volte_sempre.jsp";
+	        location.href = "volte_sempre.jsp";
 	    };
 	</script>
 	
