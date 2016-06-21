@@ -13,11 +13,11 @@ public class EntrarMesaTest extends AbstractTests {
 		driver.get(BASE_URL);
 	}
 
-	@Test
-	public void testCodigoMesaValido() {
-		entrarCodigoMesa(CODIGO_MESA);
-		assertTrue(isElementPresent(By.id("submit-btn")));
-	}
+	//@Test
+	//public void testCodigoMesaValido() {
+	//	entrarCodigoMesa(CODIGO_MESA);
+	//	assertTrue(isElementPresent(By.id("submit-btn")));
+//	}
 	
 	//@Test
 	//public void testCodigoMesaVazio() {
@@ -36,6 +36,7 @@ public class EntrarMesaTest extends AbstractTests {
 		assertTrue(isElementPresent(By.xpath(mesaInvalidaXPath)));
 	}
 	*/
+
 	private void entrarCodigoMesa(String codigo) {
 		driver.findElement(By.id("codigoMesa")).clear();
 		driver.findElement(By.id("codigoMesa")).sendKeys(codigo);
