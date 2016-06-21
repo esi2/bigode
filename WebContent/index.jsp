@@ -16,7 +16,7 @@
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
-
+            
         <title>Ô, Bigode!</title>
     </head>
     <body>
@@ -47,7 +47,7 @@
                     <form role="form" action="ConectaEstabelecimento" method="get">
                         <div class="form-group">
                             <label for="codigoMesa">Codigo da mesa:</label>
-                            <input type="codigoMesa" class="form-control" id="codigoMesa" name="codigoMesa">
+                            <input type="codigoMesa" onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 95' class="form-control" id="codigoMesa" name="codigoMesa">
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg" value="Send">
                             Acessar menu &raquo;</button>

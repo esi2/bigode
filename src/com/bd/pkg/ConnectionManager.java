@@ -7,7 +7,7 @@ public class ConnectionManager {
 	private static ConnectionManager instance = null;
 
 	private final String USERNAME = "root";
-	private final String PASSWORD = "EACHesi2016!";
+	private final String PASSWORD = "root";
 	private final String CONN_STRING = "jdbc:mysql://localhost:3306/BIGODE_TESTE";
 
 	private Connection conn = null;

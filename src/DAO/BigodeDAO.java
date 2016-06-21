@@ -26,12 +26,29 @@ public interface BigodeDAO {
         public String getNomeBar(int idBar);
         
         /**
-         * 
+         * Insere o id de pedido
          * @param id
          * @param qtd 
          * @param numMesa
+     * @param idSessao
+     * @return 
          */
-        public void inserePedido(int id, int qtd, int numMesa, int idSessao);
+        public int inserePedido(int id, int qtd, int numMesa, int idSessao);
+        
+        
+        
+        /**
+         * insere na tabela pedido_produtos
+     * @param pedidoID
+         * @param id
+         * @param qtd
+         * @param numMesa
+         * @param idSessao 
+         */
+        public void inserePedido2(int pedidoID, int id, int qtd, int numMesa, int idSessao);
+        
+        
+        
         
         /**
          * 
@@ -45,6 +62,9 @@ public interface BigodeDAO {
          */
         public int registraSession(int idMesa, String inicio, String fim, String status, int preco, int credito);
        
+        public int checaSessao (int idMesa);
+        
+        public int checaPedido (int idSessao);
        
         public ArrayList<String> listaPedidos (int idSessao);
 }

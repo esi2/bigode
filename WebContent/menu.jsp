@@ -50,7 +50,7 @@
 
             <div class="row">
                 <div class="col-xs-4">
-                    <img class="imagem-produto" src="data:image/jpeg;base64,<%=pic%>">
+                    <img class="imagem-produto" src="<%=pic%>">
                 </div>
                 <div class="col-xs-8">
                     <div class="row">
@@ -58,6 +58,7 @@
                             <p class="nome-produto">
                                 <%
                                     out.println(products.get(i));
+                                    
                                 %>
                             </p>
                         </div>
@@ -109,6 +110,7 @@
 
         <form name='jsonForm' action='Pedido' method='Post'>
             <input type='hidden' id='jsonPedido' name='jsonPedido' class='jsonPedido'>
+            <input type='hidden' id='flag' name='flag' value="<%=request.getParameter("flag")%>">
             <input type='hidden' id='sessao' name='sessao' value="<%=request.getParameter("sessao")%>">
 
         </form>

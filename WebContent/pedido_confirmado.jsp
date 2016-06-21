@@ -91,19 +91,7 @@
 
 			<div id="escolha" class="row">
 
-				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
-					<button id="dividir-conta" class="btn btn-novo-pedido show">
-						<strong> Dividir conta </strong>
-					</button>
-				</div>
-
-
-				<div class="col-xs-12">
-					<br>
-					<p align="center">
-						<strong> Ou </strong>
-					<p>
-				</div>
+				
 
 				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
 					<button id="pagar-sozinho" class="btn btn-fechar-conta show">
@@ -144,14 +132,23 @@
                 results = bdg.listaPedidos(Integer.parseInt(request.getParameter("sessao")));
                 %>
 		<div id="pedidos" class="col-xs-12">
-			<div id="pedido1" class="row">
-				<strong> Lista de Pedidos </strong>
-                                <%for(int x =0; x < results.size(); x +=4){
-                                    for(int qtd =0; qtd < Integer.parseInt(results.get(x+1)); qtd++){
+			<strong> Lista de Pedidos </strong>
+				
+                                <%
+                                int balde = 0;
+                                int cont =0;
+                                for(int x =0; x < results.size(); x +=4){
+                                if(balde != Integer.parseInt(results.get(x+3))){
+                                    balde = Integer.parseInt(results.get(x+3));
+                                    if(cont >0) out.println("</div>");   
+                                    cont++;
+                                    out.println("<div id=\"pedido1\" class=\"row\"> Pedido" + cont);
+                                }
+                                                                     
                                 %>
 				<div class="col-xs-12 produto-borda">
 					<div class="col-xs-6">
-						<p class="nome-produto" align="left"> <%=results.get(x)%>(s)</p>
+						<p class="nome-produto" align="left"><%=results.get(x+1)%>x <%=results.get(x)%>(s)</p>
 					</div>
 					<div class="col-xs-6">
 						<p class="preco-produto" align="right">R$<%=results.get(x+2)%></p>
@@ -160,8 +157,10 @@
                                         </div>
 
 				</div>
-                                <%}}%>
-			</div>
+                               <%
+                                
+                                }%>
+			
 		</div>
 
 	</div>
@@ -195,7 +194,7 @@
 			
 		</div>
 	</div>
-
+      
 	<div id="footerBar" style="display: block">
 		<!-- Flow: Botao aparece apenas apos selecionar Pedir Conta -> Pagar Sozinho -->
 		<div id="botao-pagar" class="button-place right" style="display: none">
@@ -212,13 +211,13 @@
 			name='sessao' value="<%=request.getParameter("sessao")%>">
 
 	</form>
-
+                        
 	<script>
 		// Provisorio
                 
 		document.getElementById("novo-pedido").onclick = function () {
                 var sessao = <%=request.getParameter("sessao")%>;
-	        location.href = "menu.jsp?codMesa=2&bar=1&sessao="+sessao;
+	        location.href = "menu.jsp?codMesa=<%=request.getParameter("codMesa")%>&bar=1&sessao="+sessao+"&flag=n";
 	    };
 	    
 	    document.getElementById("botao-pagar").onclick = function () {

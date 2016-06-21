@@ -85,7 +85,7 @@ public class BigodeDAOImpl implements BigodeDAO {
     }
 
     @Override
-    public void inserePedido(int id, int qtd, int numMesa, int idSessao) {
+    public int inserePedido(int id, int qtd, int numMesa, int idSessao) {
         Connection conn = ConnectionManager.getInstance().getConnection();
         
         java.util.Date dt = new java.util.Date();
@@ -109,21 +109,8 @@ public class BigodeDAOImpl implements BigodeDAO {
             System.out.println("Erro: " + e.toString());
         }
         
-           String insertProdutoPedido = "INSERT INTO PRODUTO_PEDIDO (ID_PRODUTO_PEDIDO, ID_PRODUTO, ID_PEDIDO, QUANTIDADE) "
-        					+ "VALUES (null," + id + ", "+ pedidoID+", "+ qtd + ")";
-           System.out.println(insertProdutoPedido);
-           Statement st2;
-        try {
-            st2 = (Statement) conn.createStatement();
-            st2.execute(insertProdutoPedido);
-
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.toString());
-        }
-        
-        
-
-        ConnectionManager.getInstance().close();
+                ConnectionManager.getInstance().close();
+           return pedidoID;
     }
 
 
@@ -166,7 +153,7 @@ public class BigodeDAOImpl implements BigodeDAO {
                     + " from PEDIDO join PRODUTO_PEDIDO on PEDIDO.ID_PEDIDO=PRODUTO_PEDIDO.ID_PEDIDO"
                     + " join PRODUTO on PRODUTO_PEDIDO.ID_PRODUTO = PRODUTO.ID_PRODUTO"
                     + " JOIN SESSAO ON PEDIDO.ID_MESA = SESSAO.ID_MESA"
-                    + " where STATUS_SESSAO = 'ATIVA' AND SESSAO.ID_SESSAO="+ idSessao;
+                    + " where STATUS_SESSAO = 'ATIVA' AND SESSAO.ID_SESSAO="+ idSessao +" ORDER BY PEDIDO.ID_PEDIDO;";
 
             st = (Statement) conn.createStatement();
             System.out.println(sql);
@@ -184,4 +171,63 @@ public class BigodeDAOImpl implements BigodeDAO {
         }
         ConnectionManager.getInstance().close();
         return result;}
+
+    @Override
+    public void inserePedido2(int pedidoId, int id, int qtd, int numMesa, int idSessao) {
+      Connection conn = ConnectionManager.getInstance().getConnection();
+       
+        String insertProdutoPedido = "INSERT INTO PRODUTO_PEDIDO (ID_PRODUTO_PEDIDO, ID_PRODUTO, ID_PEDIDO, QUANTIDADE) "
+        					+ "VALUES (null," + id + ", "+ pedidoId+", "+ qtd + ")";
+           System.out.println(insertProdutoPedido);
+           Statement st2;
+        try {
+            st2 = (Statement) conn.createStatement();
+            st2.execute(insertProdutoPedido);
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.toString());
+        }
+    ConnectionManager.getInstance().close();
+       
+    }
+
+    @Override
+    public int checaSessao(int idMesa) {
+     Statement st;
+        try {
+            Connection conn = ConnectionManager.getInstance().getConnection();
+
+            String sql = "select ID_SESSAO from SESSAO where ID_MESA="+idMesa+" and STATUS_SESSAO='ATIVA'";
+            System.out.println(sql);
+            st = (Statement) conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            ConnectionManager.getInstance().close();
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.toString());
+        }
+
+        return 0;}
+
+    @Override
+    public int checaPedido(int idSessao) {
+       Statement st;
+        try {
+            Connection conn = ConnectionManager.getInstance().getConnection();
+
+            String sql = "select ID_PEDIDO from PEDIDO where ID_SESSAO="+idSessao;
+            System.out.println(sql);
+            st = (Statement) conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+            ConnectionManager.getInstance().close();
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.toString());
+        }
+
+        return 0; }
 }

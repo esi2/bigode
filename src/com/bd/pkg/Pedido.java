@@ -80,6 +80,7 @@ public class Pedido extends HttpServlet {
         //Recebe String do pedido e num mesa => pedido | numMesa
         String pedido = request.getParameter("jsonPedido");
         String sessao = request.getParameter("sessao");
+        String flag = request.getParameter("flag");
         System.out.println("PEDIDO"+ pedido);
         
         Gson gson = new Gson();
@@ -88,17 +89,30 @@ public class Pedido extends HttpServlet {
         JsonArray Jarray = (JsonArray) parser.parse(pedido).getAsJsonObject().getAsJsonArray("list");
         BigodeDAO bgd = new BigodeDAOImpl(); 
         //A cada elemento do array de Json atribui para a classe e insere
-        for (JsonElement obj : Jarray) {
-         ProdutoPedido pp =  gson.fromJson(obj, ProdutoPedido.class);
-         if(pp.getQty() > 0){
-         System.out.println(pp.getId());
-         System.out.println(pp.getQty());
-         bgd.inserePedido(pp.getId(), pp.getQty(), pp.getMesa(), Integer.parseInt(sessao));
-         
-         }
-         }
+        int cont =0;
+        int numMesa = 0;
+       
         
-        response.sendRedirect("pedido_confirmado.jsp?msg=pedido&sessao="+sessao);
+        for (JsonElement obj : Jarray) {
+         int idP = bgd.checaPedido(Integer.parseInt(sessao));
+         ProdutoPedido pp =  gson.fromJson(obj, ProdutoPedido.class);
+         if(pp.getMesa() != 0){
+         if(idP == 0 || flag.equals("n") ){
+                 idP = bgd.inserePedido(pp.getId(), pp.getQty(), pp.getMesa(), Integer.parseInt(sessao));
+                 flag = "s";
+         }              
+         
+         
+         if(pp.getQty() > 0){
+            
+             
+         bgd.inserePedido2(idP, pp.getId(), pp.getQty(), pp.getMesa(), Integer.parseInt(sessao));
+         numMesa = pp.getMesa();
+        
+         }
+         }}
+        
+        response.sendRedirect("pedido_confirmado.jsp?msg=pedido&codMesa="+numMesa+"&sessao="+sessao);
     }
 
     /**

@@ -41,7 +41,10 @@ public class ConectaEstabelecimento extends HttpServlet {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		String codMesa = request.getParameter("codigoMesa");
-		
+		if(codMesa.equals("") || codMesa.equals(" ") ){
+                response.sendRedirect("index.jsp?msg=Erro");	
+                return;        
+                }
 		// Ex: codMesa = 1_3 -> bar: 1, mesa: 3
 			// codMesa = 1023_43 -> bar:1023, mesa: 43
 			
@@ -56,9 +59,11 @@ public class ConectaEstabelecimento extends HttpServlet {
 			System.out.println(clienteDAO.checaBarMesa(bar, mesa));
 			
 			if(clienteDAO.checaBarMesa(bar, mesa)){
-                            
-                                int sessao = clienteDAO.registraSession(mesa, null, null, "ativa" , 0, 0);
-				response.sendRedirect("menu.jsp?codMesa="+mesa+"&bar="+bar+"&sessao="+sessao);	
+                            int sessao = clienteDAO.checaSessao(mesa);
+                            if(sessao == 0){
+                                sessao = clienteDAO.registraSession(mesa, null, null, "ativa" , 0, 0);
+                            }
+                                response.sendRedirect("menu.jsp?codMesa="+mesa+"&bar="+bar+"&sessao="+sessao);	
 			}else{
 				response.sendRedirect("index.jsp?msg=Erro");	
 			}
