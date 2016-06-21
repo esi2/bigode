@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import com.gargoylesoftware.htmlunit.JavaScriptPage;
 
 public class PedidoTest extends AbstractTests {
-	/*
+	
 	private static final String acessarMenuXPath = "//button[@value='Send']";
 
 	@Before
@@ -20,11 +20,36 @@ public class PedidoTest extends AbstractTests {
 		driver.findElement(By.id("codigoMesa")).sendKeys(CODIGO_MESA);
 		driver.findElement(By.xpath(acessarMenuXPath)).click();
 		assertTrue(isElementPresent(By.id("submit-btn")));
+		
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
+	
+	@Test
+	public void testFazPedido() throws Exception{
+		List<WebElement> buttonUpElements = driver.findElements(By.xpath("//button[@class='button-2d up']"));
+		for(WebElement bt : buttonUpElements){
+			bt.click();
+		}
+		String precoTotalVirgula = driver.findElement(By.className("footerText")).getText();
+		String precoTotalPonto = precoTotalVirgula.substring(precoTotalVirgula.indexOf("$") + 2).replace(",", ".");
+		
+		WebElement botao = driver.findElement(By.cssSelector("#submit-btn"));
+		botao.click();
+		Thread.sleep(1000);
+		driver.get("http://143.107.58.177:8080/bigode-dono");
+		Thread.sleep(2000);
+		WebElement pedido = driver.findElement(By.xpath("//div[@id='todos-pedidos']/div/div/div/p"));
+		pedido.click();
+		Thread.sleep(1000);
+		String precoDono = driver.findElement(By.cssSelector("span.preco.fonte2")).getText();
+		System.out.println(precoDono);
+		System.out.println(precoTotalPonto);
+		assertTrue(precoDono.equals(precoTotalPonto));
+	}
+	
 	
 	@Test
 	  public void testANumeroNegativo() throws Exception {
@@ -97,5 +122,4 @@ public class PedidoTest extends AbstractTests {
 			i++;
 		}
 	}
-*/
 }
