@@ -46,7 +46,7 @@ public class PedidoTest extends AbstractTests {
 		pedido.click();
 		Thread.sleep(1000);
 		String precoDono = driver.findElement(By.cssSelector("span.preco.fonte2")).getText();
-		assertTrue(precoDono.equals(precoTotalPonto));
+		assertTrue(precoDono.contains(precoTotalPonto));
 	}
 	
 	@Test
