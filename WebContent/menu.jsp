@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <%@page import="DAO.BigodeDAO"%>
 <%@page import="DAO.BigodeDAOImpl"%>
 <%@page import="java.util.ArrayList"%>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -18,13 +17,16 @@
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/frontend/menuFunctions.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-        <title>Ô, Bigode!</title>        
+        <title>Ô, Bigode!</title>
     </head>
     <body>
         <div class="header clearfix" align="center">
-            <a href="index.jsp"> <img alt="LogoHorizontal" class="img-responsive" height=40% width=40% src="./img/Marca/bigode-marca-horizontal.png"></a>
+            <a href="index.jsp"> <img alt="LogoHorizontal"
+                                      class="img-responsive" height=40% width=40%
+                                      src="./img/Marca/bigode-marca-horizontal.png"></a>
         </div>
         <%
             BigodeDAO bgd = new BigodeDAOImpl();
@@ -66,7 +68,7 @@
                     <div class="row">
                         <div class="col-xs-8">
                             <p class="preco-produto">
-                                <%                                    out.println(products.get(i + 1));
+                                <% out.println(products.get(i + 1));
                                 %>
                             </p>
                         </div>
@@ -108,10 +110,13 @@
             <p class="footerText margin-menu">Total: R$ 0,00</p>
         </div>
 
+
         <form name='jsonForm' action='Pedido' method='Post'>
-            <input type='hidden' id='jsonPedido' name='jsonPedido' class='jsonPedido'>
-            <input type='hidden' id='flag' name='flag' value="<%=request.getParameter("flag")%>">
-            <input type='hidden' id='sessao' name='sessao' value="<%=request.getParameter("sessao")%>">
+            <input type='hidden' id='jsonPedido' name='jsonPedido'
+                   class='jsonPedido'> <input type='hidden' id='flag'
+                   name='flag' value="<%=request.getParameter("flag")%>"> <input
+                   type='hidden' id='sessao' name='sessao'
+                   value="<%=request.getParameter("sessao")%>">
 
         </form>
     </body>
