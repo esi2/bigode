@@ -1,7 +1,6 @@
 package com.bd.pkg;
 
 //[12.04.2016 HEBERT] - Implementacao DAO
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,8 +23,9 @@ import java.sql.Timestamp;
  */
 @WebServlet("/ConectaEstabelecimento")
 public class ConectaEstabelecimento extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,50 +34,69 @@ public class ConectaEstabelecimento extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		String codMesa = request.getParameter("codigoMesa");
-		if(codMesa.equals("") || codMesa.equals(" ") ){
-                response.sendRedirect("index.jsp?msg=Erro");	
-                return;        
-                }
+        // response.getWriter().append("Served at: ").append(request.getContextPath());
+        String codMesa = request.getParameter("codigoMesa");
+        String[] codMesaAux = new String[2];
+        int bar = 0;
+        int mesa = 0;
+        if (codMesa.equals("") || codMesa.equals(" ")) {
+            response.sendRedirect("index.jsp?msg=Erro");
+            return;
+        }
 		// Ex: codMesa = 1_3 -> bar: 1, mesa: 3
-			// codMesa = 1023_43 -> bar:1023, mesa: 43
-			
-			String[] codMesaAux = new String[2];
-			codMesaAux = codMesa.split("_");
-			int bar = Integer.parseInt(codMesaAux[0]);
-			int mesa = Integer.parseInt(codMesaAux[1]);
-			
-			
-			
-			BigodeDAOImpl clienteDAO = new BigodeDAOImpl();
-			System.out.println(clienteDAO.checaBarMesa(bar, mesa));
-			
-			if(clienteDAO.checaBarMesa(bar, mesa)){
-                            int sessao = clienteDAO.checaSessao(mesa);
-                            if(sessao == 0){
-                                sessao = clienteDAO.registraSession(mesa, null, null, "ativa" , 0, 0);
-                            }
-                                response.sendRedirect("menu.jsp?codMesa="+mesa+"&bar="+bar+"&sessao="+sessao);	
-			}else{
-				response.sendRedirect("index.jsp?msg=Erro");	
-			}
-			
-		
-		
-	}
+        // codMesa = 1023_43 -> bar:1023, mesa: 43
+        boolean error = false;
+        try {
+            Integer.parseInt(codMesa);
+        } catch (Exception e) {
+            System.out.println("AQUI");
+            error = true;
+        }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        try {
+            codMesaAux = codMesa.split("_");
+            bar = Integer.parseInt(codMesaAux[0]);
+            mesa = Integer.parseInt(codMesaAux[1]);
+
+        } catch (Exception e) {
+
+            System.out.println("AQUI2");
+            error = true;
+        }
+        
+        if(error){
+         response.sendRedirect("index.jsp?msg=Erro");
+            return;
+        }
+
+        BigodeDAOImpl clienteDAO = new BigodeDAOImpl();
+        System.out.println(clienteDAO.checaBarMesa(bar, mesa));
+
+        if (clienteDAO.checaBarMesa(bar, mesa)) {
+            int sessao = clienteDAO.checaSessao(mesa);
+            if (sessao == 0) {
+                sessao = clienteDAO.registraSession(mesa, null, null, "ativa", 0, 0);
+            }
+            response.sendRedirect("menu.jsp?codMesa=" + mesa + "&bar=" + bar + "&sessao=" + sessao);
+        } else {
+            response.sendRedirect("index.jsp?msg=Erro");
+        }
+
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }
