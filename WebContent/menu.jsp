@@ -21,14 +21,6 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script type="text/javascript">
-		$(document).$(function() {
-			  $('.col-xs-2.display-div').on('keydown', '.display', function(e)
-					  {-1!==$.inArray(e.keyCode,[46,8,9,27,13,110,190])||/65|67|86|88/.test(e.keyCode)&&(!0===e.ctrlKey||!0===e.metaKey)||35<=e.keyCode&&40>=e.keyCode||(e.shiftKey||48>e.keyCode||57<e.keyCode)&&(96>e.keyCode||105<e.keyCode)&&e.preventDefault()
-				  });
-			})
-		</script>
-
 <title>Ô, Bigode!</title>
 </head>
 <body>
