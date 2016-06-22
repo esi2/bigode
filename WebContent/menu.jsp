@@ -21,6 +21,28 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+<script type="text/javascript">
+	$(document).$(
+			function() {
+				$('input').keydown(
+						function(e) {
+							var a = [ 8, 9, 13, 16, 17, 18, 20, 27, 35, 36, 37,
+									38, 39, 40, 45, 46, 91, 92 ];
+							var k = e.which;
+
+							for (i = 48; i < 58; i++)
+								a.push(i);
+							for (i = 96; i < 106; i++)
+								a.push(i);
+
+							if (!(a.indexOf(k) >= 0))
+								e.preventDefault();
+
+							$('span').text('KeyCode: ' + k);
+						});
+			})
+</script>
+
 <title>Ô, Bigode!</title>
 </head>
 <body>
@@ -30,9 +52,9 @@
 			src="./img/Marca/bigode-marca-horizontal.png"></a>
 	</div>
 	<%
-            BigodeDAO bgd = new BigodeDAOImpl();
-            String nome = bgd.getNomeBar(Integer.parseInt(request.getParameter("bar")));
-        %>
+		BigodeDAO bgd = new BigodeDAOImpl();
+		String nome = bgd.getNomeBar(Integer.parseInt(request.getParameter("bar")));
+	%>
 	<div id="menu-title">
 		<p class="titulo">Peça tudo o que quiser! ;)</p>
 		<p>
@@ -45,14 +67,14 @@
 	</div>
 
 	<%
-            ArrayList<String> products = new ArrayList<String>();
-            products = bgd.listaProduto(Integer.parseInt(request.getParameter("bar")));
-        %>
+		ArrayList<String> products = new ArrayList<String>();
+		products = bgd.listaProduto(Integer.parseInt(request.getParameter("bar")));
+	%>
 
 	<%
-            for (int i = 0; i < products.size(); i += 4) {
-                String pic = products.get(i + 2);
-        %>
+		for (int i = 0; i < products.size(); i += 4) {
+			String pic = products.get(i + 2);
+	%>
 
 	<div class="container produto-borda">
 
@@ -65,9 +87,8 @@
 					<div class="col-xs-8">
 						<p class="nome-produto">
 							<%
-                                    out.println(products.get(i));
-                                    
-                                %>
+								out.println(products.get(i));
+							%>
 						</p>
 					</div>
 				</div>
@@ -75,8 +96,8 @@
 					<div class="col-xs-8">
 						<p class="preco-produto">
 							<%
-                                    out.println(products.get(i + 1));
-                                %>
+								out.println(products.get(i + 1));
+							%>
 						</p>
 					</div>
 				</div>
@@ -93,7 +114,8 @@
 						<button class="button-2d down" onclick="modifyQty(-1, this)">-</button>
 					</div>
 					<div class="col-xs-2 display-div" style="width: 30%;">
-						<input class="display" id="qty" onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+						<input type='tel' class="display" id="qty"
+							onkeyup="this.value=this.value.replace(/[^\d]/,'')"
 							onblur="modifyQtyBlur(this)" value="0" />
 					</div>
 					<div class="col-xs-3">
@@ -104,8 +126,8 @@
 		</div>
 	</div>
 	<%
-            }
-        %>
+		}
+	%>
 	<!-- /container -->
 
 	<div id="footerBar">
