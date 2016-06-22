@@ -107,7 +107,7 @@
                     <p class="font-pedido">Fazer Pedido</p>
                 </button>
             </div>
-            <p class="footerText margin-menu">Total: R$ 0.00</p>
+            <p class="footerText margin-menu">Total: R$ 0,00</p>
         </div>
 
 
