@@ -77,7 +77,6 @@ function order() {
     var order = {
         list: list
     }
-
     var jString = JSON.stringify(order);
     document.getElementById('jsonPedido').value = jString;
 }
