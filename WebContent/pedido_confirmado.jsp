@@ -202,7 +202,7 @@
 				<p class="font-pedido">Pagar conta</p>
 			</button>
 		</div>
-		<p class="footerText">Preço Total: R$ <%= total %></p>
+		<p class="footerText">Total: R$ <%= total %></p>
 	</div>
 
 	<form name='jsonForm' action='Pedido' method='Post'>

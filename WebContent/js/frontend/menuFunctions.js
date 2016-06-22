@@ -13,6 +13,9 @@ function modifyQty(val, elem) {
 }
 
 function modifyQtyBlur(elem) {
+    if (elem.value == "")
+        elem.value = 0;
+
     var new_qty = parseInt(elem.value, 10);
     if (new_qty < 0) {
         new_qty = 0;
@@ -28,18 +31,24 @@ function modifyQtyBlur(elem) {
 function updateTotal() {
     var displays = document.getElementsByClassName('display');
     var prices = document.getElementsByClassName('preco-produto');
-    var soma = 0, rounded = 0;
+    var soma = 0, floated = 0;
     for (var i = 0; i < displays.length; i++) {
-        rounded = roundToTwo(parseFloat(prices[i].innerText));
-        soma += (parseInt(displays[i].value, 10) * rounded);
+        floated = parseFloat(prices[i].innerText);
+        soma += (parseInt(displays[i].value, 10) * floated);
+        soma = roundToTwo(soma);
     }
 
     soma += "";
     var number = soma.split(".");
 
-    document.getElementsByClassName('footerText')[0].innerText = "Pre�o Total: R$ " + number[0] + "," + (number[1] ? number[1] : "00");
+    document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + number[0] + "," + (number[1] ? correctCents(number[1]) : "00");
 
 }
+
+function correctCents(number) {
+    return (number >= 10 ? number : (number + "0"));
+}
+
 
 function roundToTwo(num) {
     return +(Math.round(num + "e+2") + "e-2");
@@ -84,12 +93,12 @@ function getQueryVariable(variable) {
     }
 }
 
-function onlyNumbers(evt) {
-    if (evt.which < 48 || evt.which > 57)
-    {
-        evt.preventDefault();
-    }
-}
+//function onlyNumbers(evt) {
+//    if (evt.which < 48 || evt.which > 57)
+//    {
+//        evt.preventDefault();
+//    }
+//}
 
 function templateName(mesa, bar) {
     return '<p>Voc� est� na Mesa ' + mesa + ' do Bar ' + bar + '</p>';

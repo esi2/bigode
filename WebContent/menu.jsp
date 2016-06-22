@@ -30,7 +30,7 @@
             BigodeDAO bgd = new BigodeDAOImpl();
             String nome = bgd.getNomeBar(Integer.parseInt(request.getParameter("bar")));
         %>
-        <div id="menu-title">
+        <div id="menu-title" class="margin-menu">
             <p class="titulo">Peça tudo o que quiser! ;)</p>        
             <p>Você está na Mesa <%=request.getParameter("codMesa")%> do Bar <%=nome%></p>
             <p class="aviso">O que você pedir por aqui será incluido na conta da sua mesa e será pago tudo junto quando sua conta vier.</p>
@@ -58,7 +58,7 @@
                             <p class="nome-produto">
                                 <%
                                     out.println(products.get(i));
-                                    
+
                                 %>
                             </p>
                         </div>
@@ -66,8 +66,7 @@
                     <div class="row">
                         <div class="col-xs-8">
                             <p class="preco-produto">
-                                <%
-                                    out.println(products.get(i + 1));
+                                <%                                    out.println(products.get(i + 1));
                                 %>
                             </p>
                         </div>
@@ -84,7 +83,8 @@
                             <button class="button-2d down" onclick="modifyQty(-1, this)">-</button>
                         </div>
                         <div class="col-xs-2" style="width: 30%;">
-                            <input class="display" id="qty" onkeypress="onlyNumbers(event)" onblur="modifyQtyBlur(this)" value="0" />
+                            <!--onkeypress="onlyNumbers(event)"-->
+                            <input type="number" class="display" id="qty" onblur="modifyQtyBlur(this)" value="0" />
                         </div>
                         <div class="col-xs-3">
                             <button class="button-2d up" onclick="modifyQty(1, this)">+</button>
@@ -97,7 +97,7 @@
             }
         %>
         <!-- /container -->
-
+        <div><br><br><br></div>
         <div id="footerBar">
             <div class="button-place right">
                 <button id="submit-btn" class="button-pedido button-2d" onclick="order();
@@ -105,7 +105,7 @@
                     <p class="font-pedido">Fazer Pedido</p>
                 </button>
             </div>
-            <p class="footerText">Preço Total: R$ 0,00</p>
+            <p class="footerText margin-menu">Total: R$ 0,00</p>
         </div>
 
         <form name='jsonForm' action='Pedido' method='Post'>
