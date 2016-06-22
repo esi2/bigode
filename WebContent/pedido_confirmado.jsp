@@ -1,3 +1,4 @@
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.BigodeDAOImpl"%>
 <%@page import="DAO.BigodeDAO"%>
@@ -17,23 +18,43 @@
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/frontend/menuFunctions.js"></script>
-        <script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
+
                 $("#fechar-conta").click(function () {
                     $("#escolha").hide();
                     $("#pedido-cozinha").hide();
                     $("#pague-escolha").show();
                 });
+
                 $("#pagar-sozinho").click(function () {
                     $("#pague-escolha").hide();
                     $("#pague-sozinho").show();
                     $("#botao-pagar").show();
                 });
+
+                $('#percent').click(function () {
+                    var doubleString = document.getElementById('total').innerText.split(" ")[2],
+                            final = 0;
+
+                    doubleString = parseFloat(doubleString);
+
+                    if (this.checked) {
+                        var dezPorCento = roundToTwo(doubleString / 10);
+                        final = doubleString + dezPorCento;
+                    } else {
+                        var onzePorCento = roundToTwo(doubleString / 11);
+                        final = doubleString - onzePorCento;
+                    }
+
+                    final = final.toString().split(".");
+
+                    document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "." + (final[1] ? correctCents(final[1]) : "00");
+                });
+
             });
         </script>
-
         <title>Ô, Bigode!</title>
 
     </head>
@@ -44,7 +65,7 @@
                                       src="./img/Marca/bigode-marca-horizontal.png"></a>
         </div>
 
-        <div class="container">
+        <div>
 
             <div id="pedido-cozinha" style="display: block">
                 <div id="confirmado-title" class="col-xs-12">
@@ -122,10 +143,9 @@
                         Chaim. :]</p>
                 </div>
 
-                <div id="escolha" class="row">
+                <div id="escolha" class="col-xs-12">
                     <form action="">
-                        <input type="checkbox" name="gorjeta" value="sim">
-                        <p>Quero pagar os 10% do atendimento</p>
+                        <input id="percent" style="margin-right: 2%;" type="checkbox" name="gorjeta" value="sim">Quero pagar os 10% do atendimento
                     </form>
                 </div>
             </div>
@@ -135,6 +155,7 @@
                 <!-- Separacao -->
             </div>
 
+
             <!-- Default: Exibir itens pedidos pela mesa -->
             <%
                 BigodeDAO bdg = new BigodeDAOImpl();
@@ -142,8 +163,9 @@
                 ArrayList<String> results = new ArrayList<String>();
                 results = bdg.listaPedidos(Integer.parseInt(request.getParameter("sessao")));
             %>
-            <div id="pedidos" class="col-xs-12">
-                <strong> Lista de Pedidos </strong>
+            <div id="pedidos" class="col-xs-12" style="margin-bottom: 15%;">
+                <br>
+                <p class="titulo"> Lista de Pedidos </p>
 
                 <%
                     int balde = 0;
@@ -155,7 +177,7 @@
                                 out.println("</div>");
                             }
                             cont++;
-                            out.println("<div id=\"pedido1\" class=\"row\"> Pedido" + cont);
+                            out.println("<div id='pedido' style='margin-top: 2%;' class='font-texto row'> <p class='margin-menu'>Pedido" + cont + "</p>");
                         }
 
                 %>
@@ -166,29 +188,30 @@
                         </p>
                     </div>
                     <div class="col-xs-6">
-                        <p class="preco-produto" align="right">
-                            R$<%=results.get(x + 2)%></p>
-                            <%total += Double.parseDouble(results.get(x + 2));%>
+                        <p class="preco-produto" align="right">R$<%=results.get(x + 2)%></p>
+                        <%
+                            total += Double.parseDouble(results.get(x + 2));
+                        %>
 
                     </div>
 
                 </div>
                 <%
-
-                    }%>
+                    }
+                %>
 
             </div>
 
         </div>
 
-        <div id="footerBar" style="display: block">
+        <div id="footerBar">
             <!-- Flow: Botao aparece apenas apos selecionar Pedir Conta -> Pagar Sozinho -->
             <div id="botao-pagar" class="button-place right" style="display: none">
                 <button id="submit-btn" class="button-pedido button-2d" onclick="">
                     <p class="font-pedido">Pagar conta</p>
                 </button>
             </div>
-            <p class="footerText">Total: R$ <%= total%></p>
+            <p class="footerText margin-menu" id="total">Total: R$ <%= total%></p>
         </div>
 
         <form name='jsonForm' action='Pedido' method='Post'>

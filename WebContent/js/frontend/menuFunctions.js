@@ -41,7 +41,7 @@ function updateTotal() {
     soma += "";
     var number = soma.split(".");
 
-    document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + number[0] + "," + (number[1] ? correctCents(number[1]) : "00");
+    document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + number[0] + "." + (number[1] ? correctCents(number[1]) : "00");
 
 }
 
@@ -77,7 +77,6 @@ function order() {
     var order = {
         list: list
     }
-
     var jString = JSON.stringify(order);
     document.getElementById('jsonPedido').value = jString;
 }
