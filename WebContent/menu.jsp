@@ -95,7 +95,7 @@
 					<div class="col-xs-2 display-div" style="width: 30%;">
 						<input type="number" pattern="[0-9]*" inputmode="numeric" 
 							class="display" id="qty"
-							onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+							onkeypress="onlyNumbers(event)"
 							onblur="modifyQtyBlur(this)" value="0" />
 					</div>
 					<div class="col-xs-3">
