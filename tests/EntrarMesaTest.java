@@ -13,29 +13,28 @@ public class EntrarMesaTest extends AbstractTests {
 		driver.get(BASE_URL);
 	}
 
-	//@Test
-	//public void testCodigoMesaValido() {
-	//	entrarCodigoMesa(CODIGO_MESA);
-	//	assertTrue(isElementPresent(By.id("submit-btn")));
-//	}
+	@Test
+	public void testCodigoMesaValido() {
+		entrarCodigoMesa(CODIGO_MESA);
+		assertTrue(isElementPresent(By.id("submit-btn")));
+	}
 	
-	//@Test
-	//public void testCodigoMesaVazio() {
-	//	entrarCodigoMesa("");
-	//	assertTrue(isElementPresent(By.xpath(mesaInvalidaXPath)));
-	//}
+	@Test
+	public void testCodigoMesaVazio() {
+		entrarCodigoMesa("");
+		assertTrue(isElementPresent(By.xpath(mesaInvalidaXPath)));
+	}
 	
-	/*@Test
+	@Test
 	public void testCodigoMesaInvalido() {
 		StringBuilder str = new StringBuilder();
 		for (int i=0; i<=5; i++) {
 			str.append(randomChar());
-		}
+	}
 		
 		entrarCodigoMesa(str.toString());
 		assertTrue(isElementPresent(By.xpath(mesaInvalidaXPath)));
 	}
-	*/
 
 	private void entrarCodigoMesa(String codigo) {
 		driver.findElement(By.id("codigoMesa")).clear();
@@ -46,5 +45,4 @@ public class EntrarMesaTest extends AbstractTests {
 	private char randomChar() {
 		return (char) randomInt(0x21, 0x7E);
 	}
-
 }
