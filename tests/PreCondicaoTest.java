@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.bd.pkg.ConnectionManager;
 
 public class PreCondicaoTest {
-	/*
+	
     private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -93,6 +93,5 @@ public class PreCondicaoTest {
       acceptNextAlert = true;
     }
   }
-  */
 
     }

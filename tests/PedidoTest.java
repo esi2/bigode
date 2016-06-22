@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import com.gargoylesoftware.htmlunit.JavaScriptPage;
 
 public class PedidoTest extends AbstractTests {
-	/*
+	
 	private static final String acessarMenuXPath = "//button[@value='Send']";
 
 	@Before
@@ -135,5 +135,4 @@ public class PedidoTest extends AbstractTests {
 			i++;
 		}
 	}
-	*/
 }

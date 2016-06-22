@@ -16,7 +16,7 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.mysql.jdbc.Statement;
 
 public abstract class AbstractTests {
-	/*
+	
 	protected static final String BASE_URL = "http://143.107.58.177:8080/bigode/";
 	protected static final String CODIGO_MESA = "1_1";
 	protected static WebDriver driver;
@@ -88,5 +88,4 @@ public abstract class AbstractTests {
 		remMesa = "DELETE FROM PEDIDO WHERE ID_MESA = 1";
 		stt.executeUpdate(remMesa);
 	}
-	*/
 }
