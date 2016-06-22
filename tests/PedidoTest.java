@@ -29,6 +29,7 @@ public class PedidoTest extends AbstractTests {
 	
 	@Test
 	public void testFazPedido() throws Exception{
+		apagaPedidos();
 		List<WebElement> buttonUpElements = driver.findElements(By.xpath("//button[@class='button-2d up']"));
 		for(WebElement bt : buttonUpElements){
 			bt.click();
@@ -45,11 +46,23 @@ public class PedidoTest extends AbstractTests {
 		pedido.click();
 		Thread.sleep(1000);
 		String precoDono = driver.findElement(By.cssSelector("span.preco.fonte2")).getText();
-		System.out.println(precoDono);
-		System.out.println(precoTotalPonto);
 		assertTrue(precoDono.equals(precoTotalPonto));
 	}
 	
+	@Test
+	public void confereLista() throws Exception{
+		apagaPedidos();
+		List<WebElement> buttonUpElements = driver.findElements(By.xpath("//button[@class='button-2d up']"));
+		for(WebElement bt : buttonUpElements){
+			bt.click();
+			bt.click();
+		}
+		String precoTotal = driver.findElement(By.className("footerText")).getText();
+		WebElement botao = driver.findElement(By.cssSelector("#submit-btn"));
+		botao.click();
+		String precoTotalLista = driver.findElement(By.className("footerText")).getText();
+		assertTrue(precoTotal.equals(precoTotalLista));
+	}
 	
 	@Test
 	  public void testANumeroNegativo() throws Exception {

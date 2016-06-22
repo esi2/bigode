@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -37,10 +38,7 @@ public abstract class AbstractTests {
 		conn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
 		Statement stmt = null;
 		stmt = (Statement) conn.createStatement();
-		String remMesa = "DELETE FROM PRODUTO_PEDIDO where ID_PEDIDO IN (SELECT ID_PEDIDO FROM PEDIDO where ID_MESA = 1)";
-		stmt.executeUpdate(remMesa);
-		remMesa = "DELETE FROM PEDIDO WHERE ID_MESA = 1";
-		stmt.executeUpdate(remMesa);
+		apagaPedidos();
 		String cons = "INSERT INTO PRODUTO (NOME_PRODUTO, PRECO_PRODUTO, FOTO_PRODUTO, ID_BAR) VALUES ('testeum', 1.00, 'coxinha.gif', 1)";
 	    stmt.executeUpdate(cons);
 	    cons = "INSERT INTO PRODUTO (NOME_PRODUTO, PRECO_PRODUTO, FOTO_PRODUTO, ID_BAR) VALUES ('testedois', 0.50, 'coxinhadois.gif', 1)";
@@ -50,11 +48,8 @@ public abstract class AbstractTests {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		Statement stt = null;
+		apagaPedidos();
 		stt = (Statement) conn.createStatement();
-		String remMesa = "DELETE FROM PRODUTO_PEDIDO where ID_PEDIDO IN (SELECT ID_PEDIDO FROM PEDIDO where ID_MESA = 1)";
-		stt.executeUpdate(remMesa);
-		remMesa = "DELETE FROM PEDIDO WHERE ID_MESA = 1";
-		stt.executeUpdate(remMesa);
 		String rem = "DELETE FROM PRODUTO WHERE NOME_PRODUTO like '%teste%'";
 		stt.executeUpdate(rem);
 		conn.close();
@@ -85,6 +80,12 @@ public abstract class AbstractTests {
 			return false;
 		}
 	}
-
-
+	protected static void apagaPedidos() throws SQLException{
+		Statement stt = null;
+		stt = (Statement) conn.createStatement();
+		String remMesa = "DELETE FROM PRODUTO_PEDIDO where ID_PEDIDO IN (SELECT ID_PEDIDO FROM PEDIDO where ID_MESA = 1)";
+		stt.executeUpdate(remMesa);
+		remMesa = "DELETE FROM PEDIDO WHERE ID_MESA = 1";
+		stt.executeUpdate(remMesa);
+	}
 }
