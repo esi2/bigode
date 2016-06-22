@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 
 <%@page import="DAO.BigodeDAO"%>
 <%@page import="DAO.BigodeDAOImpl"%>
@@ -20,28 +20,6 @@
 <script src="js/frontend/menuFunctions.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-<script type="text/javascript">
-	$(document).$(
-			function() {
-				$('input').keydown(
-						function(e) {
-							var a = [ 8, 9, 13, 16, 17, 18, 20, 27, 35, 36, 37,
-									38, 39, 40, 45, 46, 91, 92 ];
-							var k = e.which;
-
-							for (i = 48; i < 58; i++)
-								a.push(i);
-							for (i = 96; i < 106; i++)
-								a.push(i);
-
-							if (!(a.indexOf(k) >= 0))
-								e.preventDefault();
-
-							$('span').text('KeyCode: ' + k);
-						});
-			})
-</script>
 
 <title>Ô, Bigode!</title>
 </head>
