@@ -4,7 +4,7 @@ import org.junit.*;
 import org.openqa.selenium.*;
 
 public class EntrarMesaTest extends AbstractTests {
-	
+	/*
 	private static final String mesaInvalidaXPath = "//div[h2/text()='Mesa inválida']";
 	private static final String acessarMenuXPath = "//button[@value='Send']";
 	
@@ -45,4 +45,5 @@ public class EntrarMesaTest extends AbstractTests {
 	private char randomChar() {
 		return (char) randomInt(0x21, 0x7E);
 	}
+	*/
 }
