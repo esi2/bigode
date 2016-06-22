@@ -101,7 +101,7 @@
 						<button class="button-2d down" onclick="modifyQty(-1, this)">-</button>
 					</div>
 					<div class="col-xs-2 display-div" style="width: 30%;">
-						<input class="display" id="qty" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+						<input class="display" id="qty" onkeyup="this.value=this.value.replace(/[^\d]/,'')"
 							onblur="modifyQtyBlur(this)" value="0" />
 					</div>
 					<div class="col-xs-3">
