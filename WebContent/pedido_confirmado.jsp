@@ -240,8 +240,7 @@
 			</button>
 		</div>
 		<p class="footerText margin-menu" id="total">
-			Total: R$
-			<%=total%></p>
+			Total: R$ <%=total%></p>
 	</div>
 
 	<form name='jsonForm' action='Pedido' method='Post'>
