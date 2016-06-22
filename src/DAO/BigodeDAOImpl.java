@@ -230,4 +230,22 @@ public class BigodeDAOImpl implements BigodeDAO {
         }
 
         return 0; }
+
+    @Override
+    public void sessaoPagamento(int idSessao, double preco) {
+       Connection conn = ConnectionManager.getInstance().getConnection();
+       String sql = "UPDATE SESSAO SET PRECO_TOTAL="+preco+", STATUS_SESSAO='PAGAMENTO' WHERE ID_SESSAO="+idSessao;
+        System.out.println(sql);
+        PreparedStatement st;
+        try {
+            st = conn.prepareStatement(sql);
+            st.executeUpdate(sql);
+          
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.toString());
+        }
+        
+                ConnectionManager.getInstance().close();
+        
+    }
 }

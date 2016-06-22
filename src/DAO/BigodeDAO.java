@@ -67,4 +67,6 @@ public interface BigodeDAO {
         public int checaPedido (int idSessao);
        
         public ArrayList<String> listaPedidos (int idSessao);
+        
+        public void sessaoPagamento (int idSessao, double preco);
 }

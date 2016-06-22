@@ -65,6 +65,15 @@
 
             });
         </script>
+        
+        <script>
+            function passaTotal(){
+                var totalOriginal = document.getElementById('total').innerText;
+                totalOriginal = totalOriginal.replace('Total: R$ ','');
+                document.getElementById('preco').value = totalOriginal;
+                
+            }
+            </script>
 <title>Ô, Bigode!</title>
 
 </head>
@@ -204,7 +213,7 @@
 					<p class="preco-produto" align="right">
 						R$<%=results.get(x + 2)%></p>
 					<%
-						total += Double.parseDouble(results.get(x + 2));
+						total += Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2));
 					%>
 
 				</div>
@@ -221,7 +230,12 @@
 	<div id="footerBar">
 		<!-- Flow: Botao aparece apenas apos selecionar Pedir Conta -> Pagar Sozinho -->
 		<div id="botao-pagar" class="button-place right" style="display: none">
-			<button id="submit-btn" class="button-pedido button-2d" onclick="">
+                    <form name="fimPedidoForm" action="fimPedido" method="POST">
+                        <input type="hidden" name="preco" id="preco" value="">
+                        <input type="hidden" name="idSessao"  value="<%=request.getParameter("sessao")%>">
+                    </form>
+                    
+                    <button id="submit-btn" class="button-pedido button-2d" onclick="javascript: passaTotal();document.fimPedidoForm.submit()">
 				<p class="font-pedido">Pagar conta</p>
 			</button>
 		</div>
