@@ -17,7 +17,8 @@
 
 <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 <script src="js/frontend/menuFunctions.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 	    $("#fechar-conta").click(function(){
@@ -59,7 +60,7 @@
 				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
 					<button id="novo-pedido" class="btn btn-novo-pedido show"
 						onclick="">
-							<strong> Fazer um novo pedido </strong>
+						<strong> Fazer um novo pedido </strong>
 					</button>
 				</div>
 
@@ -90,9 +91,19 @@
 			</div>
 
 			<div id="escolha" class="row">
+				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
+					<button id="dividir-conta" class="btn btn-novo-pedido show">
+						<strong> Dividir conta </strong>
+					</button>
+				</div>
 
+				<div class="col-xs-12">
+					<br>
+					<p align="center">
+						<strong> Ou </strong>
+					<p>
+				</div>
 				
-
 				<div id="btn-container" class="col-xs-10 col-xs-offset-1">
 					<button id="pagar-sozinho" class="btn btn-fechar-conta show">
 						<strong> Pagar sozinho </strong>
@@ -125,7 +136,7 @@
 		</div>
 
 		<!-- Default: Exibir itens pedidos pela mesa -->
-                <%
+		<%
                 BigodeDAO bdg = new BigodeDAOImpl();
                 double total = 0.0;
                 ArrayList<String> results = new ArrayList<String>();
@@ -133,8 +144,8 @@
                 %>
 		<div id="pedidos" class="col-xs-12">
 			<strong> Lista de Pedidos </strong>
-				
-                                <%
+
+			<%
                                 int balde = 0;
                                 int cont =0;
                                 for(int x =0; x < results.size(); x +=4){
@@ -146,55 +157,28 @@
                                 }
                                                                      
                                 %>
-				<div class="col-xs-12 produto-borda">
-					<div class="col-xs-6">
-						<p class="nome-produto" align="left"><%=results.get(x+1)%>x <%=results.get(x)%>(s)</p>
-					</div>
-					<div class="col-xs-6">
-						<p class="preco-produto" align="right">R$<%=results.get(x+2)%></p>
-                                                <%total +=Double.parseDouble(results.get(x+2));%>
-                                                
-                                        </div>
+			<div class="col-xs-12 produto-borda">
+				<div class="col-xs-6">
+					<p class="nome-produto" align="left"><%=results.get(x+1)%>x
+						<%=results.get(x)%>(s)
+					</p>
+				</div>
+				<div class="col-xs-6">
+					<p class="preco-produto" align="right">
+						R$<%=results.get(x+2)%></p>
+					<%total +=Double.parseDouble(results.get(x+2));%>
 
 				</div>
-                               <%
+
+			</div>
+			<%
                                 
                                 }%>
-			
+
 		</div>
 
 	</div>
 
-	<!-- Flow Pagar Sozinho: Fim -->
-
-	<div id="fim" style="display: none">
-		<div id="fim-title" class="col-xs-12">
-			<p class="titulo">Obrigado! :) </p>
-			<p class="font-texto">Esperamos que tenham gostado do bar do
-				Chaim. :]
-				
-				Divulgue o Bigode nas redes sociais para vê-lo em mais bares desse brasilzão:
-				</p>
-		</div>
-
-		<div id="redes-sociais" class="row">
-			<div id="facebook" class="col-xs-12">
-				<img class="img-responsive img-rounded" alt="" src="./img/RedesSociais/fb-share.png">
-			</div>
-		
-			<div id="googlePlus" class="col-xs-4">
-				<img class="img-responsive img-rounded" alt="" src="./img/RedesSociais/google+.png">
-			</div>
-			<div id="twitter" class="col-xs-4">
-				<img class="img-responsive img-rounded" alt="" src="./img/RedesSociais/twitter.png">
-			</div>	
-			<div id="link" class="col-xs-4">
-				<img class="img-responsive img-rounded" alt="" src="./img/RedesSociais/link-open-flat.png">
-			</div>
-			
-		</div>
-	</div>
-      
 	<div id="footerBar" style="display: block">
 		<!-- Flow: Botao aparece apenas apos selecionar Pedir Conta -> Pagar Sozinho -->
 		<div id="botao-pagar" class="button-place right" style="display: none">
@@ -202,7 +186,9 @@
 				<p class="font-pedido">Pagar conta</p>
 			</button>
 		</div>
-		<p class="footerText">Preço Total: R$ <%= total %></p>
+		<p class="footerText">
+			Preço Total: R$
+			<%= total %></p>
 	</div>
 
 	<form name='jsonForm' action='Pedido' method='Post'>
@@ -211,7 +197,7 @@
 			name='sessao' value="<%=request.getParameter("sessao")%>">
 
 	</form>
-                        
+
 	<script>
 		// Provisorio
                 
@@ -224,7 +210,7 @@
 	        location.href = "volte_sempre.jsp";
 	    };
 	</script>
-	
+
 
 </body>
 </html>
