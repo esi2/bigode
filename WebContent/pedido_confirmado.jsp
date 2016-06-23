@@ -43,20 +43,29 @@
                         var onzePorCento = roundToTwo(doubleString / 11);
                         final = doubleString - onzePorCento;
                     }
-                    final = final.toFixed(2);
                     final = final.toString().split(".");
                     document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
                 });
             });
         </script>
 
+<script>
+            function passaTotal(){
+                var totalOriginal = document.getElementById('total').innerText;
+                totalOriginal = totalOriginal.replace('Total: R$ ','');
+                totalOriginal = totalOriginal.replace(',','.');
+                document.getElementById('preco').value = totalOriginal;
+                
+            }
+            
+            </script>
             <script>
     window.onload = function() {
     	var doubleString = document.getElementById('total').innerText.replace(',', '.');
 		doubleString = doubleString.split(" ")[2];
         final = 0;
 		doubleString = parseFloat(doubleString);
-		final = final.toFixed(2);
+      	final = roundToTwo(doubleString / 10)*10;
       	final = final.toString().split(".");
         document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
     }
