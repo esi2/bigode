@@ -20,14 +20,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script type="text/javascript">
-			$(document).ready(function () {
-				var doubleString = document.getElementById('total').innerText.replace(',', '.');
-				doubleString = doubleString.split(" ")[2];
-				final = 0;
-				doubleString = parseFloat(doubleString);
-				final = Math.roundToTwo(doubleString * 100) / 100;
-			});
-			
             $(document).ready(function () {
                 $("#fechar-conta").click(function () {
                     $("#escolha").hide();
