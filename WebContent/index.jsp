@@ -47,8 +47,8 @@
                     <form role="form" action="ConectaEstabelecimento" method="get">
                         <div class="form-group">
                             <label for="codigoMesa">Codigo da mesa:</label>
-                            <input type="codigoMesa" 
-                            		type="number" class="display" id="qty"
+                            <input type="number" 
+                            		class="display" id="codigoMesa"
                             		onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode == 95' class="form-control" id="codigoMesa" name="codigoMesa">
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg" value="Send">
