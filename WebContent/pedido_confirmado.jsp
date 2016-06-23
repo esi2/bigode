@@ -64,6 +64,7 @@
             function passaTotal(){
                 var totalOriginal = document.getElementById('total').innerText;
                 totalOriginal = totalOriginal.replace('Total: R$ ','');
+                totalOriginal = totalOriginal.replace(',','.');
                 document.getElementById('preco').value = totalOriginal;
                 
             }
