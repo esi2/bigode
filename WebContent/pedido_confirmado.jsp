@@ -178,6 +178,7 @@
 		<%
 			BigodeDAO bdg = new BigodeDAOImpl();
 			double total = 0.0;
+			String totalFinal = "";
 			ArrayList<String> results = new ArrayList<String>();
 			results = bdg.listaPedidos(Integer.parseInt(request.getParameter("sessao")));
 		%>
@@ -212,6 +213,12 @@
 					<%
 						total += Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2));
 						total = (total*100)/100;
+						Double totalAux = total;
+						String[] totalString = totalAux.toString().split(".");
+						if(totalString[1].length()<2){
+							totalString[1]=totalString[1]+"0";
+						}
+						totalFinal = totalString[0]+","+totalString[1];
 					%>
 
 				</div>
@@ -241,7 +248,7 @@
 		</div>
 		<p class="footerText margin-menu" id="total">
 			Total: R$
-			<%=total%></p>
+			<%=totalFinal%></p>
 	</div>
 
 	<form name='jsonForm' action='Pedido' method='Post'>
