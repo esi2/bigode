@@ -58,10 +58,12 @@ public class PedidoTest extends AbstractTests {
 			bt.click();
 		}
 		String precoTotal = driver.findElement(By.className("footerText")).getText();
+		String precoTotalAdaptado = precoTotal.substring(precoTotal.indexOf("$") + 2);
 		WebElement botao = driver.findElement(By.cssSelector("#submit-btn"));
 		botao.click();
 		String precoTotalLista = driver.findElement(By.className("footerText")).getText();
-		assertTrue(precoTotal.equals(precoTotalLista));
+		String precoTotalListaAdaptado = precoTotal.substring(precoTotal.indexOf("$") + 2);
+		assertTrue(precoTotalAdaptado.contains(precoTotalListaAdaptado));
 	}
 	
 	@Test
