@@ -77,7 +77,7 @@ public class ConectaEstabelecimento extends HttpServlet {
             if (sessao == 0) {
                 sessao = clienteDAO.registraSession(mesa, null, null, "ativa", 0, 0);
             }
-            response.sendRedirect("menu.jsp?codMesa=" + mesa + "&bar=" + bar + "&sessao=" + sessao);
+            response.sendRedirect("menu.jsp?codMesa=" + mesa + "&bar=" + bar + "&sessao=" + sessao + "&flag=n");
         } else {
             response.sendRedirect("index.jsp?msg=Erro");
         }
