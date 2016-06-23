@@ -186,7 +186,7 @@
                         </p>
                     </div>
                     <div class="col-xs-6">
-                        <p class="preco-produto" align="right">R$<%=results.get(x + 2)%></p>
+                        <p class="preco-produto" align="right">R$<%= Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2))%></p>
                         <%
                      total += Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2)); 
                         %>
