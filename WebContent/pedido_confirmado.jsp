@@ -212,13 +212,6 @@
 						R$<%=Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2))%></p>
 					<%
 						total += Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2));
-						total = (total*100)/100;
-						String totalAux = String.valueOf(total);
-						String[] totalString = totalAux.split(".");
-						if(totalString[1].length()<2){
-							totalString[1]=totalString[1]+"0";
-						}
-						totalFinal = totalString[0]+","+totalString[1];
 					%>
 
 				</div>
@@ -248,7 +241,7 @@
 		</div>
 		<p class="footerText margin-menu" id="total">
 			Total: R$
-			<%=totalFinal%></p>
+			<%=total%></p>
 	</div>
 
 	<form name='jsonForm' action='Pedido' method='Post'>
