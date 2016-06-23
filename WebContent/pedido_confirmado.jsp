@@ -43,6 +43,7 @@
                         var onzePorCento = roundToTwo(doubleString / 11);
                         final = doubleString - onzePorCento;
                     }
+                    final = roundNumber(final, 2);
                     final = final.toString().split(".");
                     document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
                 });
@@ -57,6 +58,18 @@
                 document.getElementById('preco').value = totalOriginal;
                 
             }
+            function roundNumber(number,decimal_points) {
+            	if(!decimal_points) return Math.round(number);
+            	if(number == 0) {
+            		var decimals = "";
+            		for(var i=0;i<decimal_points;i++) decimals += "0";
+            		return "0."+decimals;
+            	}
+
+            	var exponent = Math.pow(10,decimal_points);
+            	var num = Math.round((number * exponent)).toString();
+            	return num.slice(0,-1*decimal_points) + "." + num.slice(-1*decimal_points)
+            }
             </script>
             <script>
     window.onload = function() {
@@ -64,7 +77,7 @@
 		doubleString = doubleString.split(" ")[2];
         final = 0;
 		doubleString = parseFloat(doubleString);
-      	final = roundToTwo(doubleString / 10)*10;
+      	final = roundNumber(final, 2);
       	final = final.toString().split(".");
         document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
     }
