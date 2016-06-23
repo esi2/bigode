@@ -21,17 +21,15 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script type="text/javascript">
             $(document).ready(function () {
-				$(".total").change(function(){
-					var doubleString = document.getElementById('total').innerText.replace(',', '.');
-					doubleString = doubleString.split(" ")[2];
-                    final = 0;
-					doubleString = parseFloat(doubleString);
-					final = Math.round(doubleString * 100) / 100
+				var doubleString = document.getElementById('total').innerText.replace(',', '.');
+				doubleString = doubleString.split(" ")[2];
+				final = 0;
+				doubleString = parseFloat(doubleString);
+				final = Math.roundToTwo(doubleString * 100) / 100
 					
-					final = final.toString().split(".");
-					document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
-				})
-            	
+				final = final.toString().split(".");
+				document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
+				
                 $("#fechar-conta").click(function () {
                     $("#escolha").hide();
                     $("#pedido-cozinha").hide();
