@@ -64,7 +64,7 @@
 		doubleString = doubleString.split(" ")[2];
         final = 0;
 		doubleString = parseFloat(doubleString);
-      	final = roundToTwo(doubleString / 10);
+      	final = roundToTwo(doubleString / 10)*10;
       	final = final.toString().split(".");
         document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
     }
