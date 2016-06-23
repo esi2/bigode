@@ -28,6 +28,21 @@ public class PedidoTest extends AbstractTests {
 	}
 	
 	@Test
+	public void testFazNovoPedido() throws Exception{
+		List<WebElement> buttonUpElements = driver.findElements(By.xpath("//button[@class='button-2d up']"));
+		for(WebElement bt : buttonUpElements){
+			bt.click();
+		}
+		
+		WebElement botao = driver.findElement(By.cssSelector("#submit-btn"));
+		botao.click();
+		botao = driver.findElement(By.cssSelector("#novo-pedido"));
+		botao.click();
+		assertTrue(isElementPresent(By.id("submit-btn")));
+		apagaPedidos();
+	}
+	
+	@Test
 	public void testFazPedido() throws Exception{
 		apagaPedidos();
 		List<WebElement> buttonUpElements = driver.findElements(By.xpath("//button[@class='button-2d up']"));
