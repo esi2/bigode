@@ -213,8 +213,8 @@
 					<%
 						total += Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2));
 						total = (total*100)/100;
-						Double totalAux = total;
-						String[] totalString = totalAux.toString().split(".");
+						String totalAux = String.valueOf(total);
+						String[] totalString = totalAux.split(".");
 						if(totalString[1].length()<2){
 							totalString[1]=totalString[1]+"0";
 						}
