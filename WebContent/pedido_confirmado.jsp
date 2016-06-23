@@ -64,10 +64,11 @@
     	var doubleString = document.getElementById('total').innerText.replace(',', '.');
 		doubleString = doubleString.split(" ")[2];
         final = 0;
-		doubleString = parseFloat(doubleString);
+		doubleString = parseFloat(doubleString).toFixed(2);
       	final = Math.round(final * 100) / 100;
       	final = final.toString().split(".");
-        document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1].length==1 ? final[1]+"0" : final[1]);
+        document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + 
+        (final[1].length==1 ? final[1]+"0" : final[1]);
     }
 </script>
 <title>Ô, Bigode!</title>
