@@ -21,6 +21,16 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script type="text/javascript">
             $(document).ready(function () {
+				$(".total").change(function(){
+					var doubleString = document.getElementById('total').innerText.split(" ")[2],
+                    final = 0;
+					doubleString = parseFloat(doubleString);
+					final = Math.round(doubleString * 100) / 100
+					
+					final = final.toString().split(".");
+					document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
+				})
+            	
                 $("#fechar-conta").click(function () {
                     $("#escolha").hide();
                     $("#pedido-cozinha").hide();
@@ -32,10 +42,9 @@
                     $("#botao-pagar").show();
                 });
                 $('#percent').click(function () {
-                	var doubleString = document.getElementById('total').innerText.replace(',', '.');
-					doubleString = doubleString.split(" ")[2];
-                    final = 0;
-					doubleString = parseFloat(doubleString);
+                    var doubleString = document.getElementById('total').innerText.split(" ")[2],
+                            final = 0;
+                    doubleString = parseFloat(doubleString);
                     if (this.checked) {
                         var dezPorCento = roundToTwo(doubleString / 10);
                         final = doubleString + dezPorCento;
@@ -48,29 +57,15 @@
                 });
             });
         </script>
-
-<script>
+        
+        <script>
             function passaTotal(){
                 var totalOriginal = document.getElementById('total').innerText;
                 totalOriginal = totalOriginal.replace('Total: R$ ','');
-                totalOriginal = totalOriginal.replace(',','.');
                 document.getElementById('preco').value = totalOriginal;
                 
             }
-            
             </script>
-            <script>
-    window.onload = function() {
-    	var doubleString = document.getElementById('total').innerText.replace(',', '.');
-		doubleString = doubleString.split(" ")[2];
-        final = 0;
-		doubleString = parseFloat(doubleString).toFixed(2);
-      	final = Math.round(final * 100) / 100;
-      	final = final.toString().split(".");
-        document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + 
-        (final[1].length==1 ? final[1]+"0" : final[1]);
-    }
-</script>
 <title>Ô, Bigode!</title>
 
 </head>
@@ -178,7 +173,6 @@
 		<%
 			BigodeDAO bdg = new BigodeDAOImpl();
 			double total = 0.0;
-			String totalFinal = "";
 			ArrayList<String> results = new ArrayList<String>();
 			results = bdg.listaPedidos(Integer.parseInt(request.getParameter("sessao")));
 		%>
@@ -209,7 +203,7 @@
 				</div>
 				<div class="col-xs-6">
 					<p class="preco-produto" align="right">
-						R$<%=Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2))%></p>
+						R$<%=results.get(x + 2)%></p>
 					<%
 						total += Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2));
 					%>
@@ -228,20 +222,17 @@
 	<div id="footerBar">
 		<!-- Flow: Botao aparece apenas apos selecionar Pedir Conta -> Pagar Sozinho -->
 		<div id="botao-pagar" class="button-place right" style="display: none">
-			<form name="fimPedidoForm" action="fimPedido" method="POST">
-				<input type="hidden" name="preco" id="preco" value=""> <input
-					type="hidden" name="idSessao"
-					value="<%=request.getParameter("sessao")%>">
-			</form>
-
-			<button id="submit-btn" class="button-pedido button-2d"
-				onclick="javascript: passaTotal();document.fimPedidoForm.submit()">
+                    <form name="fimPedidoForm" action="fimPedido" method="POST">
+                        <input type="hidden" name="preco" id="preco" value="">
+                        <input type="hidden" name="idSessao"  value="<%=request.getParameter("sessao")%>">
+                    </form>
+                    
+                    <button id="submit-btn" class="button-pedido button-2d" onclick="javascript: passaTotal();document.fimPedidoForm.submit()">
 				<p class="font-pedido">Pagar conta</p>
 			</button>
 		</div>
 		<p class="footerText margin-menu" id="total">
-			Total: R$
-			<%=total%></p>
+			Total: R$ <%=total%></p>
 	</div>
 
 	<form name='jsonForm' action='Pedido' method='Post'>
