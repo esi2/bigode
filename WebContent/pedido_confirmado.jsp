@@ -43,7 +43,7 @@
                         var onzePorCento = roundToTwo(doubleString / 11);
                         final = doubleString - onzePorCento;
                     }
-                    final = final.toString().toFixed(2)
+                    final = final.toString().toFixed(2);
                     final = final.split(".");
                     document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
                 });
