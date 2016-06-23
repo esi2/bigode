@@ -43,7 +43,7 @@ public class PedidoTest extends AbstractTests {
 		apagaPedidos();
 	}
 	
-	@Test
+/*	@Test
 	public void testFazPedido() throws Exception{
 		apagaPedidos();
 		List<WebElement> buttonUpElements = driver.findElements(By.xpath("//button[@class='button-2d up']"));
@@ -64,7 +64,7 @@ public class PedidoTest extends AbstractTests {
 		String precoDono = driver.findElement(By.cssSelector("span.preco.fonte2")).getText();
 		assertTrue(precoDono.contains(precoTotalPonto));
 	}
-	
+	*/
 	@Test
 	public void confereLista() throws Exception{
 		apagaPedidos();
