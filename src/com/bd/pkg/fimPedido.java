@@ -78,8 +78,14 @@ public class fimPedido extends HttpServlet {
         double precoFinal = Double.parseDouble(request.getParameter("preco"));
         int idSessao = Integer.parseInt(request.getParameter("idSessao"));
         
+        System.out.println(precoFinal);
+        System.out.println(idSessao);
+        
+        
         BigodeDAO bgd = new BigodeDAOImpl();
         bgd.sessaoPagamento(idSessao, precoFinal);
+        
+        System.out.println("PASSEO");
         response.sendRedirect("volte_sempre.jsp");
         
         
