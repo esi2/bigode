@@ -38,7 +38,8 @@ public class PedidoTest extends AbstractTests {
 		botao.click();
 		botao = driver.findElement(By.cssSelector("#novo-pedido"));
 		botao.click();
-		assertTrue(isElementPresent(By.id("submit-btn")));
+	    buttonUpElements = driver.findElements(By.xpath("//button[@class='button-2d up']"));
+	    assertTrue(buttonUpElements.size() > 0);
 		apagaPedidos();
 	}
 	
