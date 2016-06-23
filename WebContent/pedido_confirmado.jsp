@@ -22,7 +22,8 @@
 <script type="text/javascript">
             $(document).ready(function () {
 				$(".total").change(function(){
-					var doubleString = document.getElementById('total').innerText.split(" ")[2],
+					var doubleString = document.getElementById('total').innerText.replace(',', '.');
+					doubleString = doubleString.split(" ")[2];
                     final = 0;
 					doubleString = parseFloat(doubleString);
 					final = Math.round(doubleString * 100) / 100
@@ -42,9 +43,10 @@
                     $("#botao-pagar").show();
                 });
                 $('#percent').click(function () {
-                    var doubleString = document.getElementById('total').innerText.split(" ")[2],
-                            final = 0;
-                    doubleString = parseFloat(doubleString);
+                	var doubleString = document.getElementById('total').innerText.replace(',', '.');
+					doubleString = doubleString.split(" ")[2];
+                    final = 0;
+					doubleString = parseFloat(doubleString);
                     if (this.checked) {
                         var dezPorCento = roundToTwo(doubleString / 10);
                         final = doubleString + dezPorCento;
