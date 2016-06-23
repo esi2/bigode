@@ -1,4 +1,3 @@
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.BigodeDAOImpl"%>
 <%@page import="DAO.BigodeDAO"%>
@@ -37,19 +36,15 @@
                     $("#pedido-cozinha").hide();
                     $("#pague-escolha").show();
                 });
-
                 $("#pagar-sozinho").click(function () {
                     $("#pague-escolha").hide();
                     $("#pague-sozinho").show();
                     $("#botao-pagar").show();
                 });
-
                 $('#percent').click(function () {
                     var doubleString = document.getElementById('total').innerText.split(" ")[2],
                             final = 0;
-
                     doubleString = parseFloat(doubleString);
-
                     if (this.checked) {
                         var dezPorCento = roundToTwo(doubleString / 10);
                         final = doubleString + dezPorCento;
@@ -57,12 +52,9 @@
                         var onzePorCento = roundToTwo(doubleString / 11);
                         final = doubleString - onzePorCento;
                     }
-
                     final = final.toString().split(".");
-
                     document.getElementsByClassName('footerText')[0].innerText = "Total: R$ " + final[0] + "," + (final[1] ? correctCents(final[1]) : "00");
                 });
-
             });
         </script>
         
@@ -211,7 +203,7 @@
 				</div>
 				<div class="col-xs-6">
 					<p class="preco-produto" align="right">
-						R$<%=results.get(x + 2)%></p>
+						R$<%=Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2))%></p>
 					<%
 						total += Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2));
 					%>
@@ -252,14 +244,12 @@
 
 	<script>
             // Provisorio
-
             document.getElementById("novo-pedido").onclick = function () {
                 var sessao = <%=request.getParameter("sessao")%>;
                 location.href = "menu.jsp?codMesa=<%=request.getParameter("codMesa")%>
 		&bar=1&sessao="
 					+ sessao + "&flag=n";
 		};
-
 		document.getElementById("botao-pagar").onclick = function() {
 			location.href = "volte_sempre.jsp";
 		};
