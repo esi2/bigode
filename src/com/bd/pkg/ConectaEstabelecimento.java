@@ -52,12 +52,7 @@ public class ConectaEstabelecimento extends HttpServlet {
 		// Ex: codMesa = 1_3 -> bar: 1, mesa: 3
         // codMesa = 1023_43 -> bar:1023, mesa: 43
         boolean error = false;
-        try {
-            Integer.parseInt(codMesa);
-        } catch (Exception e) {
-            System.out.println("AQUI");
-            error = true;
-        }
+       
 
         try {
             codMesaAux = codMesa.split("_");
@@ -66,7 +61,6 @@ public class ConectaEstabelecimento extends HttpServlet {
 
         } catch (Exception e) {
 
-            System.out.println("AQUI2");
             error = true;
         }
         
