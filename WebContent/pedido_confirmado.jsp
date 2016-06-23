@@ -211,6 +211,7 @@
 						R$<%=Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2))%></p>
 					<%
 						total += Integer.parseInt(results.get(x+1))*Double.parseDouble(results.get(x + 2));
+						total = (total*100)/100;
 					%>
 
 				</div>
